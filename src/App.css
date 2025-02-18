@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+#root {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+body {
+  background-color: #111827;
+  color: white;
+}
+
+/* LOGIN-PAGE */
