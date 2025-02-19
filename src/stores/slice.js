@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import bcrypt from "bcryptjs";
 import foto_1 from "../assets/foto-1.jpg";
 import foto_2 from "../assets/foto-2.jpg";
 import foto_3 from "../assets/foto-3.jpg";
@@ -6,6 +7,8 @@ import foto_3 from "../assets/foto-3.jpg";
 const storedUser = localStorage.getItem("currentUser")
   ? JSON.parse(localStorage.getItem("currentUser"))
   : null;
+
+const hashPassword = (password) => bcrypt.hashSync(password, 10);
 
 const usersSlice = createSlice({
   name: "users",
@@ -15,7 +18,7 @@ const usersSlice = createSlice({
         id: 0,
         name: "Gaia",
         email: "gaia@email.com",
-        password: "ciaociao",
+        password: hashPassword(password),
         isChecked: false,
         img: foto_1,
         gender: "f",
@@ -24,7 +27,7 @@ const usersSlice = createSlice({
         id: 1,
         name: "Barbara",
         email: "barbara@email.com",
-        password: "ciaociao2",
+        password: hashPassword(password),
         isChecked: false,
         img: foto_2,
         gender: "f",
@@ -33,7 +36,7 @@ const usersSlice = createSlice({
         id: 2,
         name: "Riccardo",
         email: "riccardo@email.com",
-        password: "ciaociao33",
+        password: hashPassword(password),
         isChecked: false,
         img: foto_3,
         gender: "m",
@@ -43,15 +46,14 @@ const usersSlice = createSlice({
   },
   reducers: {
     login: (state, action) => {
-      const user = state.value.find(
-        (u) =>
-          u.email == action.payload.email &&
-          u.password == action.payload.password
+      const user = state.value.find((u) => u.email == action.payload.email);
+      const hashedPassword = bcrypt.compareSync(
+        action.payload.password,
+        user.password
       );
-
       user.isChecked = action.payload.isChecked;
 
-      if (user) {
+      if (user && hashedPassword) {
         state.currentUser = user;
         localStorage.setItem("currentUser", JSON.stringify(user));
       }

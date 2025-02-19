@@ -54,9 +54,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const findUser = users.find(
-      (user) => user.email == form.email && user.password == form.password
-    );
+    const findUser = users.find((user) => user.email == form.email);
 
     if (findUser) {
       setError(false);
@@ -73,6 +71,8 @@ function Login() {
       isChecked: false,
     });
   };
+
+  // console.log(users);
 
   return (
     <>
