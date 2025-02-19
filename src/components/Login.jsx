@@ -77,7 +77,7 @@ function Login() {
 
   return (
     <>
-      <span className="LoginContainer">
+      <section className="LoginContainer">
         <div className="flex justify-center items-center pb-[20px]">
           <img src={logo} alt="" className="w-[300px] rounded-full" />
         </div>
@@ -127,6 +127,7 @@ function Login() {
                 id="password"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
+                placeholder="Inserisci Password"
               />
             </div>
             <div className="flex items-start mb-5">
@@ -155,7 +156,7 @@ function Login() {
             </button>
           </form>
         </div>
-      </span>
+      </section>
     </>
   );
 }
