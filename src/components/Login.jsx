@@ -103,10 +103,10 @@ function Login() {
             {/* MODALE */}
             {error && (
               <div
-                className="fixed inset-0 z-50 flex justify-center items-center w-full h-full bg-gray-900 bg-opacity-50"
+                className="fixed inset-0 z-50 flex justify-center items-center w-full h-full"
                 onClick={() => setError(false)}
               >
-                <div className="relative p-4 w-full max-w-md bg-white rounded-lg shadow-sm dark:bg-gray-700">
+                <div className="relative p-4 w-full max-w-md bg-white rounded-lg shadow-sm">
                   <button
                     type="button"
                     className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -131,7 +131,7 @@ function Login() {
                   </button>
                   <div className="p-4 md:p-5 text-center">
                     <svg
-                      className="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
+                      className="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-[#ff0000]"
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
