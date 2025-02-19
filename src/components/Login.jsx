@@ -23,7 +23,7 @@ function Login() {
   useEffect(() => {
     if (!currentUser || !users) return;
 
-    if (currentUser.isChecked) {
+    if (currentUser) {
       const findUser = users.find(
         (user) =>
           user.id == currentUser.id &&
@@ -31,7 +31,7 @@ function Login() {
           user.password == currentUser.password
       );
 
-      if (findUser) {
+      if (findUser && currentUser.isChecked) {
         navigate("/home");
         console.log("Credenziali corrette");
       } else {
@@ -55,7 +55,9 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const findUser = users.find((user) => user.email == form.email);
+    const findUser = users.find(
+      (user) => user.email == form.email && user.password == form.password
+    );
 
     if (findUser) {
       setError(false);

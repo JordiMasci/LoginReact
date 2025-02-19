@@ -8,7 +8,7 @@ const storedUser = localStorage.getItem("currentUser")
   ? JSON.parse(localStorage.getItem("currentUser"))
   : null;
 
-const hashPassword = (password) => bcrypt.hashSync(password, 10);
+// const hashPassword = (password) => bcrypt.hashSync(password, 10);
 
 const usersSlice = createSlice({
   name: "users",
@@ -18,7 +18,7 @@ const usersSlice = createSlice({
         id: 0,
         name: "Gaia",
         email: "gaia@email.com",
-        password: hashPassword("ciaociao"),
+        password: "ciaociao",
         isChecked: false,
         img: foto_1,
         gender: "f",
@@ -27,7 +27,7 @@ const usersSlice = createSlice({
         id: 1,
         name: "Barbara",
         email: "barbara@email.com",
-        password: hashPassword("ciaociao2"),
+        password: "ciaociao2",
         isChecked: false,
         img: foto_2,
         gender: "f",
@@ -36,7 +36,7 @@ const usersSlice = createSlice({
         id: 2,
         name: "Riccardo",
         email: "riccardo@email.com",
-        password: hashPassword("ciaociao3"),
+        password: "ciaociao3",
         isChecked: false,
         img: foto_3,
         gender: "m",
@@ -46,14 +46,18 @@ const usersSlice = createSlice({
   },
   reducers: {
     login: (state, action) => {
-      const user = state.value.find((u) => u.email == action.payload.email);
-      const hashedPassword = bcrypt.compareSync(
-        action.payload.password,
-        user.password
+      const user = state.value.find(
+        (u) =>
+          u.email == action.payload.email &&
+          u.password == action.payload.password
       );
-      user.isChecked = action.payload.isChecked;
+      // const hashedPassword = bcrypt.compareSync(
+      //   action.payload.password,
+      //   user.password
+      // );
 
-      if (user && hashedPassword) {
+      if (user) {
+        user.isChecked = action.payload.isChecked;
         state.currentUser = user;
         localStorage.setItem("currentUser", JSON.stringify(user));
       }
