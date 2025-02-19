@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { login } from "../stores/slice";
+import { login } from "../stores/userSlice";
 import logo from "../assets/logo.avif";
 import "./Login.scss";
 

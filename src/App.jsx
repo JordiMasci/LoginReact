@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
-import { logout } from "./stores/slice";
+import { logout } from "./stores/userSlice";
 import { useNavigate } from "react-router-dom";
 
 function App() {
