@@ -8,8 +8,6 @@ const storedUser = localStorage.getItem("currentUser")
   ? JSON.parse(localStorage.getItem("currentUser"))
   : null;
 
-// const hashPassword = (password) => bcrypt.hashSync(password, 10);
-
 const usersSlice = createSlice({
   name: "users",
   initialState: {
@@ -22,6 +20,7 @@ const usersSlice = createSlice({
         isChecked: false,
         img: foto_1,
         gender: "f",
+        profileId: 1,
       },
       {
         id: 1,
@@ -31,6 +30,7 @@ const usersSlice = createSlice({
         isChecked: false,
         img: foto_2,
         gender: "f",
+        profileId: 2,
       },
       {
         id: 2,
@@ -40,6 +40,7 @@ const usersSlice = createSlice({
         isChecked: false,
         img: foto_3,
         gender: "m",
+        profileId: 3,
       },
     ],
     currentUser: storedUser,
@@ -51,10 +52,6 @@ const usersSlice = createSlice({
           u.email == action.payload.email &&
           u.password == action.payload.password
       );
-      // const hashedPassword = bcrypt.compareSync(
-      //   action.payload.password,
-      //   user.password
-      // );
 
       if (user) {
         user.isChecked = action.payload.isChecked;

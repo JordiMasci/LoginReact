@@ -24,6 +24,7 @@ function Login() {
     isChecked: false,
   });
 
+  // CONTROLLO DATI AL CARICAMENTO PAGINA
   useEffect(() => {
     if (!currentUser || !users) return;
 
@@ -46,6 +47,7 @@ function Login() {
     }
   }, []);
 
+  // CONTROLLO INSERIMENTO DATI (INPUT)
   const handleChange = (e) => {
     const { value, name, type, checked } = e.target;
     const inputValue = type === "checkbox" ? checked : value;
@@ -59,6 +61,7 @@ function Login() {
     });
   };
 
+  // VALIDAZIONE FORM
   const validateForm = (updatedForm) => {
     const emailValid =
       updatedForm.email.includes("@") && updatedForm.email.includes(".");
@@ -68,7 +71,7 @@ function Login() {
     setDisable(!emailValid || !passwordValid);
   };
 
-  // SUBMIT VALIDATION
+  // SUBMIT
   const handleSubmit = (e) => {
     e.preventDefault();
 

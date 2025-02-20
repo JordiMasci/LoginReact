@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "./stores/userSlice";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import { profileById } from "./stores/profileSlice";
 
 function App() {
   const user = useSelector((state) => state.users.currentUser);
@@ -14,7 +15,11 @@ function App() {
     dispatch(logout());
     navigate("/");
   };
-  // console.log(user);
+
+  // PROVA CORRELAZIONE PROFILE-ID --> USERS
+  // In questo modo troviamo il legame della tabella profile rispetto l'utente connesso
+  const profile = useSelector((state) => profileById(state, user?.profileId));
+  console.log("questo è profile", profile);
 
   return (
     <>
@@ -26,13 +31,15 @@ function App() {
               {user.gender == "f" ? "BENVENUTA" : "BENVENUTO"}
             </h1>
 
-            <p className="text-lg">{user.name}</p>
-            <img
-              src={user.img}
-              alt=""
-              className="w-[200px] rounded-[50%] py-[30px]"
-            />
-            <h3 className="pt-[20px]">{user.email}</h3>
+            {profile.viewName && <p className="text-lg">{user.name}</p>}
+            {profile.viewImg && (
+              <img
+                src={user.img}
+                alt=""
+                className="w-[200px] rounded-[50%] py-[30px]"
+              />
+            )}
+            {profile.viewEmail && <h3 className="pt-[20px]">{user.email}</h3>}
 
             <button
               onClick={handleClick}

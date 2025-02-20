@@ -4,7 +4,7 @@ import logo from "../assets/logo.avif";
 const Navbar = ({ user }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  console.log(user);
+  // console.log(user);
 
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900 w-full pb-[30px] relative">
