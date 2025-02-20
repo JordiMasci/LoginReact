@@ -15,6 +15,8 @@ function Login() {
 
   const [error, setError] = useState(false);
 
+  const [isDisable, setDisable] = useState(true);
+
   const [focusButton, setFocusButton] = useState(false);
   const [form, setForm] = useState({
     email: "",
@@ -63,6 +65,7 @@ function Login() {
     const passwordValid = updatedForm.password.length >= 8;
 
     setFocusButton(emailValid && passwordValid);
+    setDisable(!emailValid || !passwordValid);
   };
 
   // SUBMIT VALIDATION
@@ -80,6 +83,8 @@ function Login() {
       console.log("Accesso riuscito");
     } else {
       setError(true);
+      setFocusButton(false);
+      setDisable(true);
       console.log("Accesso negato");
     }
     setForm({
@@ -95,6 +100,7 @@ function Login() {
         <div className="flex justify-center items-center pb-[20px]">
           <img src={logo} alt="" className="w-[300px] rounded-full" />
         </div>
+
         <div className="flex flex-col justify-center items-center">
           <form
             className="w-full flex flex-col justify-center max-w-sm"
@@ -106,10 +112,14 @@ function Login() {
                 className="fixed inset-0 z-50 flex justify-center items-center w-full h-full"
                 onClick={() => setError(false)}
               >
-                <div className="relative p-4 w-full max-w-md bg-white rounded-lg shadow-sm">
+                <div
+                  className="relative p-4 w-full max-w-md bg-white rounded-lg shadow-sm"
+                  onClick={(e) => e.stopPropagation()}
+                >
                   <button
                     type="button"
-                    className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                    className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 
+                    rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                     onClick={() => setError(false)}
                   >
                     <svg
@@ -176,7 +186,6 @@ function Login() {
                 id="email"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Enter email"
-                required
               />
             </div>
             <div className="mb-5">
@@ -197,7 +206,6 @@ function Login() {
                  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700
                   dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
                    dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                required
                 placeholder="Enter password"
               />
             </div>
@@ -222,6 +230,7 @@ function Login() {
               </label>
             </div>
             <button
+              disabled={isDisable}
               type="submit"
               className={`${
                 focusButton
