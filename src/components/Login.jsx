@@ -179,7 +179,6 @@ function Login() {
               </label>
               <input
                 onChange={handleChange}
-                onBlur={() => validateForm(form)}
                 value={form.email}
                 name="email"
                 type="email"
@@ -197,7 +196,6 @@ function Login() {
               </label>
               <input
                 onChange={handleChange}
-                onBlur={() => validateForm(form)}
                 value={form.password}
                 name="password"
                 type="password"
