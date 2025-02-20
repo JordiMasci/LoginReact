@@ -1,10 +1,18 @@
 import { useState } from "react";
 import logo from "../assets/logo.avif";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { logout } from "../stores/userSlice";
 
 const Navbar = ({ user }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  // console.log(user);
+  const handleClick = () => {
+    dispatch(logout());
+    navigate("/");
+  };
 
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900 w-full pb-[30px] relative">
@@ -98,11 +106,12 @@ const Navbar = ({ user }) => {
             </li>
             <li>
               <a
+                onClick={handleClick}
                 href="#"
                 className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-500
                  md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white"
               >
-                Contact
+                LOGOUT
               </a>
             </li>
           </ul>

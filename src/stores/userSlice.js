@@ -21,6 +21,8 @@ const usersSlice = createSlice({
         img: foto_1,
         gender: "f",
         profileId: 1,
+        description:
+          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima, perferendis!",
       },
       {
         id: 1,
@@ -31,6 +33,8 @@ const usersSlice = createSlice({
         img: foto_2,
         gender: "f",
         profileId: 2,
+        description:
+          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima, perferendis!",
       },
       {
         id: 2,
@@ -41,6 +45,8 @@ const usersSlice = createSlice({
         img: foto_3,
         gender: "m",
         profileId: 3,
+        description:
+          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima, perferendis!",
       },
     ],
     currentUser: storedUser,
