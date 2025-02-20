@@ -1,7 +1,7 @@
 import { useState } from "react";
 import logo from "../assets/logo.avif";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../stores/userSlice";
 
 const Navbar = ({ user }) => {
@@ -96,13 +96,13 @@ const Navbar = ({ user }) => {
               </a>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to={"/users"}
                 className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-500 
                 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white"
               >
-                Pricing
-              </a>
+                Users
+              </Link>
             </li>
             <li>
               <a
