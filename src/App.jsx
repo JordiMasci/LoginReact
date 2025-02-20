@@ -33,7 +33,7 @@ function App() {
   // MODIFICA SUPER-ADMIN
   const dispatch = useDispatch();
 
-  const provaPrompt = () => {
+  const handleChangeName = () => {
     const newName = prompt("Modifica Nome");
     if (newName) {
       dispatch(changeName(newName));
@@ -55,7 +55,7 @@ function App() {
             <div className="flex gap-3">
               <p className="text-lg">{user.name}</p>
               {profile.changeName && (
-                <span onClick={provaPrompt}>
+                <span onClick={handleChangeName}>
                   <i className="fa-solid fa-pen-to-square"></i>
                 </span>
               )}
