@@ -4,7 +4,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../stores/userSlice";
 
-const Navbar = ({ user }) => {
+const Navbar = () => {
+  const user = useSelector((state) => state.users.currentUser);
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
