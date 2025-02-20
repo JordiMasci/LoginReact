@@ -63,7 +63,7 @@ const Navbar = ({ user }) => {
             <li>
               <a
                 href="#"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-500 md:hover:bg-transparent
                  md:hover:text-blue-700 md:p-0 dark:text-white"
               >
                 Home
@@ -72,7 +72,7 @@ const Navbar = ({ user }) => {
             <li>
               <a
                 href="#"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-500 md:hover:bg-transparent
                  md:hover:text-blue-700 md:p-0 dark:text-white"
               >
                 About
@@ -81,7 +81,7 @@ const Navbar = ({ user }) => {
             <li>
               <a
                 href="#"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-500
                  md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white"
               >
                 Services
@@ -90,7 +90,7 @@ const Navbar = ({ user }) => {
             <li>
               <a
                 href="#"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-500 
                 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white"
               >
                 Pricing
@@ -99,7 +99,7 @@ const Navbar = ({ user }) => {
             <li>
               <a
                 href="#"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-500
                  md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white"
               >
                 Contact
