@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { profileById } from "./stores/profileSlice";
+import { changeName } from "./stores/userSlice";
 
 function App() {
   const user = useSelector((state) => state.users.currentUser);
@@ -29,6 +30,18 @@ function App() {
 
   const handleCancelText = () => setChange("");
 
+  // MODIFICA SUPER-ADMIN
+  const dispatch = useDispatch();
+
+  const provaPrompt = () => {
+    const newName = prompt("Modifica Nome");
+    if (newName) {
+      dispatch(changeName(newName));
+    }
+  };
+
+  console.log(user);
+
   return (
     <>
       <div className="flex flex-col items-center">
@@ -39,7 +52,14 @@ function App() {
               {user.gender == "f" ? "BENVENUTA" : "BENVENUTO"}
             </h1>
 
-            <p className="text-lg">{user.name}</p>
+            <div className="flex gap-3">
+              <p className="text-lg">{user.name}</p>
+              {profile.changeName && (
+                <span onClick={provaPrompt}>
+                  <i className="fa-solid fa-pen-to-square"></i>
+                </span>
+              )}
+            </div>
 
             <img
               src={user.img}

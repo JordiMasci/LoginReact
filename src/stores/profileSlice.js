@@ -12,17 +12,17 @@ const profileSlice = createSlice({
       {
         id: 1,
         changeText: true,
-        newText: true,
+        changeName: true,
       },
       {
         id: 2,
         changeText: true,
-        newText: false,
+        changeName: false,
       },
       {
         id: 3,
         changeText: false,
-        newText: false,
+        changeName: false,
       },
     ],
   },
