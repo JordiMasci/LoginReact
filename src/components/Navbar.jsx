@@ -18,12 +18,12 @@ const Navbar = ({ user }) => {
     <nav className="bg-white border-gray-200 dark:bg-gray-900 w-full pb-[30px] relative">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src={logo} className="h-8 rounded-full" alt="Flowbite Logo" />
+          <img src={logo} className="h-12 rounded-full" alt="Flowbite Logo" />
         </a>
 
         <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <img
-            className="w-8 h-8 rounded-full"
+            className="w-12 h-12 rounded-full"
             src={user.img}
             alt="user photo"
           />

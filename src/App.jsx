@@ -23,7 +23,7 @@ function App() {
 
   const handleCancel = () => setEditing(false);
 
-  const savingChange = (e) => setChange(e.target.value);
+  const handleSavingChange = (e) => setChange(e.target.value);
 
   const handleConfirm = () => setEditing(false);
 
@@ -50,7 +50,7 @@ function App() {
               {/* EDITO TESTO */}
               {editing ? (
                 <textarea
-                  onChange={savingChange}
+                  onChange={handleSavingChange}
                   type="text-area"
                   name="text"
                   value={change}
