@@ -110,28 +110,20 @@ const Navbar = () => {
                 Users
               </Link>
             </li>
-            <li>
-              <Link
-                to={"/ceateUser"}
-                className="block py-2 px-3 text-gray-900 rounded
+            {profile.superAdmin ? (
+              <li>
+                <Link
+                  to={"/ceateUser"}
+                  className="block py-2 px-3 text-gray-900 rounded
                  hover:bg-gray-500 md:hover:bg-transparent
                  md:hover:text-blue-700 md:p-0 dark:text-white"
-              >
-                Create User
-              </Link>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-gray-900 rounded
-                 hover:bg-gray-500
-                 md:hover:bg-transparent
-                  md:hover:text-blue-700 md:p-0
-                   dark:text-white"
-              >
-                Services
-              </a>
-            </li>
+                >
+                  Create User
+                </Link>
+              </li>
+            ) : (
+              ""
+            )}
 
             <li>
               <a
