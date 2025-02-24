@@ -11,13 +11,13 @@ const profileSlice = createSlice({
     value: [
       {
         id: 1,
+        viewUsers: true,
         changeData: true,
-        deleteData: true,
       },
       {
         id: 2,
-        changeData: true,
-        deleteData: false,
+        viewUsers: true,
+        changeData: false,
       },
       {
         id: 3,

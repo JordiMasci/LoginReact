@@ -2,16 +2,20 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Navbar from "../components/Navbar";
 import Card from "../components/Card";
+import { profileById } from "../stores/profileSlice";
 
 function Users() {
   const currentUser = useSelector((state) => state.users.currentUser);
   const users = useSelector((state) => state.users.value);
-  console.log(currentUser);
+
+  const profile = useSelector((state) =>
+    profileById(state, currentUser?.profileId)
+  );
 
   return (
     <>
       <div className="flex flex-col items-center">
-        {currentUser ? (
+        {currentUser && profile.viewUsers ? (
           <>
             <Navbar></Navbar>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

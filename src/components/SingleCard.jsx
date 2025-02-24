@@ -1,5 +1,11 @@
+import Navbar from "./Navbar";
+
 function SingleCard() {
-  return <></>;
+  return (
+    <>
+      <Navbar></Navbar>
+    </>
+  );
 }
 
 export default SingleCard;
