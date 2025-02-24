@@ -6,7 +6,7 @@ function Card({ userId, img, name, description }) {
       transition-transform duration-300"
     >
       <div className="flex justify-center">
-        <img className="w-[50%] h-48 object-cover" src={img} />
+        <img className=" h-48 object-cover" src={img} />
       </div>
       <div className="p-4">
         <h2 className="text-xl font-semibold text-gray-800">{name}</h2>
