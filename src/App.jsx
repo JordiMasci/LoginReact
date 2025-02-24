@@ -35,30 +35,27 @@ function App() {
 
   const handleChangeName = () => {
     const newName = prompt("Modifica Nome");
-    if (newName) {
-      dispatch(changeName(newName));
-    }
+    dispatch(changeName(newName));
   };
 
-  console.log(user);
+  // console.log(user);
 
   return (
     <>
       <div className="flex flex-col items-center">
         {user ? (
           <>
-            <Navbar user={user}></Navbar>
+            <Navbar></Navbar>
             <h1 className="text-3xl italic pt-[30px] pb-[10px]">
               {user.gender == "f" ? "BENVENUTA" : "BENVENUTO"}
             </h1>
 
             <div className="flex gap-3">
               <p className="text-lg">{user.name}</p>
-              {profile.changeName && (
-                <span onClick={handleChangeName}>
-                  <i className="fa-solid fa-pen-to-square"></i>
-                </span>
-              )}
+
+              <span onClick={handleChangeName} className="cursor-pointer ">
+                <i className="fa-solid fa-pen-to-square hover:scale-120 transition-transform duration-300"></i>
+              </span>
             </div>
 
             <img
@@ -88,28 +85,25 @@ function App() {
 
               {!editing ? (
                 <div className="flex justify-center gap-4 pb-[10px]">
-                  {profile.changeText && (
-                    <button
-                      onClick={handleChangeText}
-                      className="cursor-pointer mt-[30px] text-white bg-blue-700 hover:bg-green-800 
+                  <button
+                    onClick={handleChangeText}
+                    className="cursor-pointer mt-[30px] text-white bg-blue-700 hover:bg-green-800 
                                focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full
                                sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700
                               dark:focus:ring-green-800"
-                    >
-                      Modifica
-                    </button>
-                  )}
-                  {profile.changeText && (
-                    <button
-                      onClick={handleCancelText}
-                      className="cursor-pointer mt-[30px] text-white bg-blue-700 hover:bg-red-800 focus:ring-4 
+                  >
+                    Modifica
+                  </button>
+
+                  <button
+                    onClick={handleCancelText}
+                    className="cursor-pointer mt-[30px] text-white bg-blue-700 hover:bg-red-800 focus:ring-4 
                                focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm 
                                w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600
                               dark:hover:bg-red-700 dark:focus:ring-red-800"
-                    >
-                      Elimina
-                    </button>
-                  )}
+                  >
+                    Elimina
+                  </button>
                 </div>
               ) : (
                 <div className="flex justify-center gap-4 pb-[10px]">

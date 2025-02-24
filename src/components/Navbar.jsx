@@ -71,13 +71,13 @@ const Navbar = () => {
            dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
           >
             <li>
-              <a
-                href="#"
+              <Link
+                to={"/home"}
                 className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-500 md:hover:bg-transparent
                  md:hover:text-blue-700 md:p-0 dark:text-white"
               >
                 Home
-              </a>
+              </Link>
             </li>
             <li>
               <a
@@ -99,6 +99,7 @@ const Navbar = () => {
             </li>
             <li>
               <Link
+                user={user}
                 to={"/users"}
                 className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-500 
                 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white"
