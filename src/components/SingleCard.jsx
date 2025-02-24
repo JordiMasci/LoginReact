@@ -7,6 +7,7 @@ function SingleCard() {
     <>
       <Navbar></Navbar>
       <h1>CARTA SINGOLA</h1>
+      <p>ID: {cardId}</p>
     </>
   );
 }

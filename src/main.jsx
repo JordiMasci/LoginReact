@@ -20,12 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/users",
     element: <Users></Users>,
-    children: [
-      {
-        path: ":cardID",
-        element: <SingleCard></SingleCard>,
-      },
-    ],
+  },
+  {
+    path: "/users/:cardId",
+    element: <SingleCard></SingleCard>,
   },
 ]);
 
