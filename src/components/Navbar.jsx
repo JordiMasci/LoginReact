@@ -99,6 +99,17 @@ const Navbar = () => {
                 Home
               </Link>
             </li>
+
+            <li>
+              <Link
+                user={user}
+                to={"/users"}
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-500 
+                md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white"
+              >
+                Users
+              </Link>
+            </li>
             <li>
               <a
                 href="#"
@@ -106,7 +117,7 @@ const Navbar = () => {
                  hover:bg-gray-500 md:hover:bg-transparent
                  md:hover:text-blue-700 md:p-0 dark:text-white"
               >
-                About
+                Create User
               </a>
             </li>
             <li>
@@ -120,17 +131,6 @@ const Navbar = () => {
               >
                 Services
               </a>
-            </li>
-
-            <li>
-              <Link
-                user={user}
-                to={"/users"}
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-500 
-                md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white"
-              >
-                Users
-              </Link>
             </li>
 
             <li>

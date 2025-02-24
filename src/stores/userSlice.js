@@ -142,6 +142,7 @@ const usersSlice = createSlice({
         localStorage.setItem("currentUser", JSON.stringify(user));
       }
     },
+
     logout: (state) => {
       state.currentUser = null;
       localStorage.removeItem("currentUser");
@@ -180,9 +181,38 @@ const usersSlice = createSlice({
     deleteUser: (state, action) => {
       state.value = state.value.filter((user) => user.id !== action.payload);
     },
+
+    updateUser: (state, action) => {
+      const { id, name, email, description } = action.payload;
+      const index = state.value.findIndex((user) => user.id === id);
+      if (index !== -1) {
+        state.value[index].name = name;
+        state.value[index].email = email;
+        state.value[index].description = description;
+        // Se l'utente aggiornato è anche quello connesso, aggiornalo anche in currentUser
+        if (state.currentUser && state.currentUser.id === id) {
+          state.currentUser = {
+            ...state.currentUser,
+            name,
+            email,
+            description,
+          };
+          localStorage.setItem(
+            "currentUser",
+            JSON.stringify(state.currentUser)
+          );
+        }
+      }
+    },
   },
 });
 
-export const { login, logout, changeName, changeDescription, deleteUser } =
-  usersSlice.actions;
+export const {
+  login,
+  logout,
+  changeName,
+  changeDescription,
+  deleteUser,
+  updateUser,
+} = usersSlice.actions;
 export default usersSlice.reducer;

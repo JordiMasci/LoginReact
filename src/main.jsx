@@ -7,6 +7,7 @@ import App from "./App.jsx";
 import Users from "./components/Users.jsx";
 import Login from "./components/Login.jsx";
 import SingleCard from "./components/SingleCard.jsx";
+import EditUser from "./components/EditUser.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/users/:cardId",
     element: <SingleCard></SingleCard>,
+  },
+  {
+    path: "/editUser/:cardId",
+    element: <EditUser></EditUser>,
   },
 ]);
 
