@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Value } from "sass";
 
 const profileById = (state, profileId) => {
   return state.profiles.value.find((profile) => profile.id == profileId);

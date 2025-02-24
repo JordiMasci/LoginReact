@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import bcrypt from "bcryptjs";
 import foto_1 from "../assets/foto-1.jpg";
 import foto_2 from "../assets/foto-2.jpg";
 import foto_3 from "../assets/foto-3.jpg";
