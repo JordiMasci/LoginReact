@@ -34,7 +34,7 @@ function App() {
   const dispatch = useDispatch();
 
   const handleChangeName = () => {
-    const newName = prompt("Modifica Nome");
+    const newName = prompt("Modifica Nome", user.name);
     dispatch(changeName(newName));
   };
 

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Card({ userId, img, name, description }) {
   return (
     <div
@@ -12,12 +14,14 @@ function Card({ userId, img, name, description }) {
         </h2>
         <p className="text-gray-600 mt-2 text-center">{description}</p>
         <div className="mt-4 flex justify-center">
-          <button
-            className="px-6 py-2 bg-blue-500 text-white rounded-lg
+          <Link to={`${userId}`} key={userId}>
+            <button
+              className="px-6 py-2 bg-blue-500 text-white rounded-lg
            hover:bg-blue-600 transition cursor-pointer"
-          >
-            Modifica
-          </button>
+            >
+              Modifica
+            </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Navbar from "../components/Navbar";
 import Card from "../components/Card";
 import { profileById } from "../stores/profileSlice";
+import { Link } from "react-router-dom";
 
 function Users() {
   const currentUser = useSelector((state) => state.users.currentUser);
