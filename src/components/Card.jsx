@@ -5,7 +5,7 @@ function Card({ userId, img, name, description }) {
     <div
       className="max-w-sm mx-auto bg-white shadow-lg 
     rounded-2xl overflow-hidden border border-gray-200 
-    hover:scale-105 transition-transform duration-300 min-h-[300px]"
+    hover:scale-105 transition-transform duration-300 min-h-[300px] w-full"
     >
       <img className="w-full h-48 object-cover" src={img} alt={name} />
       <div className="p-4 flex flex-col justify-between">
