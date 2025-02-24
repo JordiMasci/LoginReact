@@ -13,15 +13,10 @@ function Users() {
     profileById(state, currentUser?.profileId)
   );
 
-  useEffect(() => {
-    console.log("Update users", currentUser);
-  }, [currentUser]);
-  console.log(currentUser);
-
   return (
     <>
       <div className="flex flex-col items-center">
-        {currentUser && profile.viewUsers ? (
+        {currentUser ? (
           <>
             <Navbar></Navbar>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

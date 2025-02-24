@@ -2,16 +2,11 @@ import { useState } from "react";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
 import Navbar from "./components/Navbar";
-import { profileById } from "./stores/profileSlice";
+
 import { changeName, changeDescription } from "./stores/userSlice";
 
 function App() {
   const user = useSelector((state) => state.users.currentUser);
-
-  // PROVA CORRELAZIONE PROFILE-ID --> USERS
-  // In questo modo troviamo il legame della tabella profile rispetto l'utente connesso
-  const profile = useSelector((state) => profileById(state, user?.profileId));
-  // console.log("questo è profile", profile)
 
   // MODIFICA SUPER-ADMIN
   const dispatch = useDispatch();

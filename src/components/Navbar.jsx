@@ -121,20 +121,18 @@ const Navbar = () => {
                 Services
               </a>
             </li>
-            {profile.viewUsers ? (
-              <li>
-                <Link
-                  user={user}
-                  to={"/users"}
-                  className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-500 
+
+            <li>
+              <Link
+                user={user}
+                to={"/users"}
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-500 
                 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white"
-                >
-                  Users
-                </Link>
-              </li>
-            ) : (
-              ""
-            )}
+              >
+                Users
+              </Link>
+            </li>
+
             <li>
               <a
                 onClick={handleClick}
