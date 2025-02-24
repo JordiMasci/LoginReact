@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import Users from "./components/Users.jsx";
 import Login from "./components/Login.jsx";
+import SingleCard from "./components/SingleCard.jsx";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,12 @@ const router = createBrowserRouter([
   {
     path: "/users",
     element: <Users></Users>,
+    children: [
+      {
+        path: ":cardID",
+        element: <SingleCard></SingleCard>,
+      },
+    ],
   },
 ]);
 
