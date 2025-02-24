@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUser } from "../stores/userSlice";
+import { profileById } from "../stores/profileSlice";
 
 function EditUser() {
   const { cardId } = useParams();
@@ -32,11 +33,10 @@ function EditUser() {
     e.preventDefault();
     // Dispatch dell'azione per aggiornare l'utente
     dispatch(updateUser({ id: user.id, name, email, description }));
-    // Dopo l'aggiornamento, naviga alla pagina degli utenti o a quella di dettaglio
+    // Dopo l'aggiornamento, naviga alla pagina degli utenti
     navigate("/users");
   };
 
-  // Se l'utente non viene trovato, mostra un messaggio
   if (!user) {
     return (
       <div className="flex justify-center items-center h-screen">

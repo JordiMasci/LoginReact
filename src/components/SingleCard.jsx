@@ -17,7 +17,6 @@ function SingleCard() {
   const userId = useSelector((state) =>
     state.users.value.find((singleUser) => singleUser.id == cardId)
   );
-  console.log(userId);
 
   const handleDelete = () => {
     if (window.confirm("Sei sicuro di voler eliminare questo utente?")) {
