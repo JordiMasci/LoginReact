@@ -36,7 +36,10 @@ function App() {
               <p className="text-lg">{user.name}</p>
 
               <span onClick={handleChangeName} className="cursor-pointer ">
-                <i className="fa-solid fa-pen-to-square hover:scale-120 transition-transform duration-300"></i>
+                <i
+                  className="fa-solid fa-pen-to-square hover:scale-120
+                 transition-transform duration-300"
+                ></i>
               </span>
             </div>
 
@@ -49,14 +52,17 @@ function App() {
               {/* EDITO TESTO */}
 
               <div className="h-[50px]">
-                <p className="p-[20px] text-[20px]  rounded-2xl text-white text-center">
+                <p
+                  className="p-[20px] text-[20px]  rounded-2xl
+                 text-white text-center"
+                >
                   {user.description}
                 </p>
               </div>
 
               {/* FINE EDITING */}
 
-              <div className="flex justify-center gap-4 pb-[10px]">
+              {/* <div className="flex justify-center gap-4 pb-[10px]">
                 <button
                   onClick={handleChangeDescription}
                   className="cursor-pointer mt-[30px] text-white bg-blue-700 hover:bg-green-800 
@@ -66,7 +72,7 @@ function App() {
                 >
                   Modifica
                 </button>
-              </div>
+              </div> */}
             </div>
           </>
         ) : (

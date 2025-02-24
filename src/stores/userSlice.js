@@ -176,9 +176,13 @@ const usersSlice = createSlice({
         localStorage.setItem("currentUser", JSON.stringify(state.currentUser));
       }
     },
+
+    deleteUser: (state, action) => {
+      state.value = state.value.filter((user) => user.id !== action.payload);
+    },
   },
 });
 
-export const { login, logout, changeName, changeDescription } =
+export const { login, logout, changeName, changeDescription, deleteUser } =
   usersSlice.actions;
 export default usersSlice.reducer;

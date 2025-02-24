@@ -1,19 +1,30 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { profileById } from "../stores/profileSlice";
+import { deleteUser } from "../stores/userSlice";
 
 function SingleCard() {
   const { cardId } = useParams();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const user = useSelector((state) => state.users.currentUser);
   // PROVA CORRELAZIONE PROFILE-ID --> USERS
   // In questo modo troviamo il legame della tabella profile rispetto l'utente connesso
   const profile = useSelector((state) => profileById(state, user?.profileId));
-  console.log(profile);
 
   const userId = useSelector((state) =>
     state.users.value.find((singleUser) => singleUser.id == cardId)
   );
+  console.log(userId);
+
+  const handleDelete = () => {
+    if (window.confirm("Sei sicuro di voler eliminare questo utente?")) {
+      dispatch(deleteUser(userId.id));
+      navigate("/users");
+    }
+  };
 
   if (!userId) {
     return (
@@ -24,7 +35,6 @@ function SingleCard() {
       </>
     );
   }
-  //   console.log(userId);
 
   return (
     <>
@@ -58,18 +68,27 @@ function SingleCard() {
 
           {/* Altre informazioni */}
           <div className="flex justify-center gap-4">
-            <button
-              className="bg-blue-600 text-white px-6 py-2 rounded-lg
+            {profile.changeData ? (
+              <button
+                className="bg-blue-600 text-white px-6 py-2 rounded-lg
              hover:bg-blue-700 transition-colors cursor-pointer"
-            >
-              Modifica
-            </button>
-            <button
-              className="bg-gray-600 text-white px-6 py-2 rounded-lg
+              >
+                Modifica
+              </button>
+            ) : (
+              ""
+            )}
+            {profile.deleteData ? (
+              <button
+                onClick={handleDelete}
+                className="bg-gray-600 text-white px-6 py-2 rounded-lg
              hover:bg-gray-700 transition-colors cursor-pointer"
-            >
-              Elimina
-            </button>
+              >
+                Elimina
+              </button>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>
