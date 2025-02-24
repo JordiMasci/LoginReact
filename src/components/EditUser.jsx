@@ -9,11 +9,16 @@ function EditUser() {
   const { cardId } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const currentUser = useSelector((state) => state.users.currentUser);
   // Seleziona l'utente da modificare in base al cardId
   const user = useSelector((state) =>
     state.users.value.find((singleUser) => singleUser.id == cardId)
   );
+
+  const profile = useSelector((state) =>
+    profileById(state, currentUser?.profileId)
+  );
+  console.log(profile.changeData);
 
   // Stato locale per i campi del form
   const [name, setName] = useState("");
@@ -37,10 +42,10 @@ function EditUser() {
     navigate("/users");
   };
 
-  if (!user) {
+  if (!user || !profile.changeData) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <p className="text-red-500 text-2xl">Utente non trovato</p>
+        <p className="text-red-500 text-2xl">Utente non trovato/abilitato</p>
       </div>
     );
   }
