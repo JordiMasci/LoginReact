@@ -14,6 +14,7 @@ function EditUser() {
   const user = useSelector((state) =>
     state.users.value.find((singleUser) => singleUser.id == cardId)
   );
+  console.log(user);
 
   const profile = useSelector((state) =>
     profileById(state, currentUser?.profileId)

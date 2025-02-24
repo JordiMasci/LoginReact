@@ -204,6 +204,16 @@ const usersSlice = createSlice({
         }
       }
     },
+
+    createUser: (state, action) => {
+      const newUser = action.payload;
+      const newId =
+        state.value.length > 0
+          ? Math.max(...state.value.map((u) => u.id)) + 1
+          : 0;
+      newUser.id = newId;
+      state.value.push(newUser);
+    },
   },
 });
 
@@ -214,5 +224,6 @@ export const {
   changeDescription,
   deleteUser,
   updateUser,
+  createUser,
 } = usersSlice.actions;
 export default usersSlice.reducer;

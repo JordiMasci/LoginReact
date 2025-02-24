@@ -111,14 +111,14 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to={"/ceateUser"}
                 className="block py-2 px-3 text-gray-900 rounded
                  hover:bg-gray-500 md:hover:bg-transparent
                  md:hover:text-blue-700 md:p-0 dark:text-white"
               >
                 Create User
-              </a>
+              </Link>
             </li>
             <li>
               <a

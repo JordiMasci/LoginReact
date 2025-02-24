@@ -28,17 +28,17 @@ function App() {
         {user ? (
           <>
             <Navbar></Navbar>
-            <h1 className="text-3xl italic pt-[30px] pb-[10px]">
+            <h1 className="text-3xl italic pt-[30px] pb-[10px] text-white">
               {user.gender == "f" ? "BENVENUTA" : "BENVENUTO"}
             </h1>
 
             <div className="flex gap-3">
-              <p className="text-lg">{user.name}</p>
+              <p className="text-lg text-white">{user.name}</p>
 
               <span onClick={handleChangeName} className="cursor-pointer ">
                 <i
                   className="fa-solid fa-pen-to-square hover:scale-120
-                 transition-transform duration-300"
+                 transition-transform duration-300 text-white"
                 ></i>
               </span>
             </div>
