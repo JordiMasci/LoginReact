@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Navbar from "../components/Navbar";
 import Card from "../components/Card";
@@ -12,6 +12,11 @@ function Users() {
   const profile = useSelector((state) =>
     profileById(state, currentUser?.profileId)
   );
+
+  useEffect(() => {
+    console.log("Update users", currentUser);
+  }, [currentUser]);
+  console.log(currentUser);
 
   return (
     <>

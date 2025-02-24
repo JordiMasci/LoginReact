@@ -150,12 +150,36 @@ const usersSlice = createSlice({
 
     changeName: (state, action) => {
       if (state.currentUser) {
+        // Cambia il nome dell'utente connesso
         state.currentUser.name = action.payload;
+        // Aggiorna la lista utenti con il nuovo nome
+        const userIndex = state.value.findIndex(
+          (u) => u.id === state.currentUser.id
+        );
+        if (userIndex !== -1) {
+          state.value[userIndex].name = action.payload;
+        }
+        localStorage.setItem("currentUser", JSON.stringify(state.currentUser));
+      }
+    },
+
+    changeDescription: (state, action) => {
+      if (state.currentUser) {
+        // Cambia la descrizione dell'utente connesso
+        state.currentUser.description = action.payload;
+        // Aggiorna la lista utenti con la nuova descrizione
+        const userIndex = state.value.findIndex(
+          (u) => u.id === state.currentUser.id
+        );
+        if (userIndex !== -1) {
+          state.value[userIndex].description = action.payload;
+        }
         localStorage.setItem("currentUser", JSON.stringify(state.currentUser));
       }
     },
   },
 });
 
-export const { login, logout, changeName } = usersSlice.actions;
+export const { login, logout, changeName, changeDescription } =
+  usersSlice.actions;
 export default usersSlice.reducer;

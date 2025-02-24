@@ -9,7 +9,7 @@ const Navbar = () => {
   const user = useSelector((state) => state.users.currentUser);
 
   const profile = useSelector((state) => profileById(state, user?.profileId));
-  console.log(profile);
+  // console.log(profile);
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dispatch = useDispatch();

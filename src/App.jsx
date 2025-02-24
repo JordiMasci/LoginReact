@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { profileById } from "./stores/profileSlice";
-import { changeName } from "./stores/userSlice";
+import { changeName, changeDescription } from "./stores/userSlice";
 
 function App() {
   const user = useSelector((state) => state.users.currentUser);
@@ -38,7 +38,11 @@ function App() {
     dispatch(changeName(newName));
   };
 
-  // console.log(user);
+  const handleChangeDescription = () => {
+    const newDescription = prompt("Modifica descrizione", user.description);
+    dispatch(changeDescription(newDescription));
+  };
+  console.log(user);
 
   return (
     <>
@@ -77,7 +81,7 @@ function App() {
               ) : (
                 <div className="h-[50px]">
                   <p className="p-[20px] text-[20px]  rounded-2xl text-white text-center">
-                    {change}
+                    {user.description}
                   </p>
                 </div>
               )}
@@ -86,7 +90,7 @@ function App() {
               {!editing ? (
                 <div className="flex justify-center gap-4 pb-[10px]">
                   <button
-                    onClick={handleChangeText}
+                    onClick={handleChangeDescription}
                     className="cursor-pointer mt-[30px] text-white bg-blue-700 hover:bg-green-800 
                                focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full
                                sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700
