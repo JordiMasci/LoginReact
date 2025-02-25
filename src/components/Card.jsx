@@ -25,7 +25,8 @@ function Card({ userId, img, name, description, profileCurrentUser, user }) {
     <div
       className="max-w-sm mx-auto bg-white shadow-lg 
     rounded-2xl overflow-hidden border border-gray-200 
-    hover:scale-102 transition-transform duration-300 min-h-[300px] w-full relative"
+    hover:scale-102 transition-transform duration-300 
+    min-h-[300px] w-full relative flex flex-col"
     >
       {isSuperAdmin && !profile.superAdmin && (
         <span
@@ -42,7 +43,7 @@ function Card({ userId, img, name, description, profileCurrentUser, user }) {
         src={img}
         alt={name}
       />
-      <div className="p-4 flex flex-col justify-between">
+      <div className="p-4 flex flex-col flex-grow justify-between h-full">
         <h2 className="text-xl font-semibold text-gray-800 text-center">
           {name}
         </h2>
