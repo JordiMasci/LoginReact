@@ -4,7 +4,6 @@ import Navbar from "./Navbar";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUser } from "../stores/userSlice";
 import { profileById } from "../stores/profileSlice";
-import { space } from "postcss/lib/list";
 
 function EditUser() {
   const { cardId } = useParams();
