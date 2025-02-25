@@ -13,7 +13,7 @@ function Users() {
     profileById(state, currentUser?.profileId)
   );
 
-  console.log(users);
+  // console.log(users);
 
   return (
     <>
