@@ -41,13 +41,14 @@ function SingleCard() {
     <>
       <Navbar></Navbar>
       <div className="flex justify-center p-6">
-        <div className="max-w-lg w-full bg-white rounded-xl shadow-lg p-8 space-y-6">
+        <div className="max-w-lg w-full bg-white rounded-xl shadow-lg p-8 space-y-8">
           <div className="text-center">
             <img
               src={userId.img}
               alt={userId.name}
               className="w-32 h-32 rounded-full mx-auto border-4 border-gray-300"
             />
+            {/* Nome utente */}
             <h1 className="text-3xl font-bold text-gray-800 mt-4">
               {userId.name}
             </h1>
@@ -60,10 +61,18 @@ function SingleCard() {
           </div>
 
           {/* Info generali */}
-          <div className="flex justify-between text-gray-700">
-            <div className="flex justify-center space-x-2 w-full">
-              <span className="font-medium">Genere:</span>
+          <div
+            className="flex flex-col sm:flex-row justify-between text-gray-700 
+          space-y-4 md:space-y-0"
+          >
+            {/* <!-- Genere --> */}
+            <div className="w-full">
+              <span className="font-medium">Genere: </span>
               <span>{userId.gender === "f" ? "Femminile" : "Maschile"}</span>
+            </div>
+            {/* <!-- Privilegi --> */}
+            <div className="w-full sm:text-right">
+              <p>Privilegi: {profile.name}</p>
             </div>
           </div>
 
