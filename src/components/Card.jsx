@@ -27,7 +27,7 @@ function Card({ userId, img, name, description, profileCurrentUser, user }) {
     rounded-2xl overflow-hidden border border-gray-200 
     hover:scale-102 transition-transform duration-300 min-h-[300px] w-full relative"
     >
-      {isSuperAdmin && (
+      {isSuperAdmin && !profile.superAdmin && (
         <span
           onClick={handleDelete}
           className="h-5 w-5 flex items-center justify-center font-medium 
