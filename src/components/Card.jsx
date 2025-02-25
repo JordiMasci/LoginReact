@@ -1,12 +1,20 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { profileById } from "../stores/profileSlice";
+import { deleteUser } from "../stores/userSlice";
 
 function Card({ userId, img, name, description, profileCurrentUser, user }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const profile = useSelector((state) => profileById(state, user?.profileId));
+
+  const handleDelete = () => {
+    if (window.confirm("Sicuro di voler eliminare questo utente?")) {
+      dispatch(deleteUser(user.id));
+    }
+  };
 
   const isSuperAdmin = profileCurrentUser?.superAdmin;
   const isAdmin = profileCurrentUser?.admin;
@@ -17,9 +25,23 @@ function Card({ userId, img, name, description, profileCurrentUser, user }) {
     <div
       className="max-w-sm mx-auto bg-white shadow-lg 
     rounded-2xl overflow-hidden border border-gray-200 
-    hover:scale-105 transition-transform duration-300 min-h-[300px] w-full"
+    hover:scale-102 transition-transform duration-300 min-h-[300px] w-full relative"
     >
-      <img className="w-full h-48 object-cover" src={img} alt={name} />
+      {isSuperAdmin && (
+        <span
+          onClick={handleDelete}
+          className="prova absolute top-[2%] right-[3%] cursor-pointer 
+         bold text-black text-[20px]"
+        >
+          <i className="fa-regular fa-circle-xmark"></i>
+        </span>
+      )}
+
+      <img
+        className="w-full h-48 object-cover rounded-full"
+        src={img}
+        alt={name}
+      />
       <div className="p-4 flex flex-col justify-between">
         <h2 className="text-xl font-semibold text-gray-800 text-center">
           {name}

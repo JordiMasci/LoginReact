@@ -14,11 +14,6 @@ function Users() {
     profileById(state, currentUser?.profileId)
   );
 
-  // Profilo privilegi tutti gli utenti
-  const profile = useSelector((state) =>
-    profileById(state, users[5]?.profileId)
-  );
-
   // console.log(profile);
 
   // console.log("QUESTO è PROFILE", profile);
