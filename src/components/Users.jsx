@@ -13,6 +13,8 @@ function Users() {
     profileById(state, currentUser?.profileId)
   );
 
+  console.log(users);
+
   return (
     <>
       <div className="flex flex-col items-center">

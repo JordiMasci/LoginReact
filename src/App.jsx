@@ -62,7 +62,7 @@ function App() {
 
               {/* FINE EDITING */}
 
-              {/* <div className="flex justify-center gap-4 pb-[10px]">
+              <div className="flex justify-center gap-4 pb-[10px]">
                 <button
                   onClick={handleChangeDescription}
                   className="cursor-pointer mt-[30px] text-white bg-blue-700 hover:bg-green-800 
@@ -72,7 +72,7 @@ function App() {
                 >
                   Modifica
                 </button>
-              </div> */}
+              </div>
             </div>
           </>
         ) : (

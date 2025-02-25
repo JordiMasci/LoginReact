@@ -21,9 +21,10 @@ function SingleCard() {
   const handleDelete = () => {
     if (window.confirm("Sei sicuro di voler eliminare questo utente?")) {
       dispatch(deleteUser(userId.id));
-      navigate("/users");
+      userId.id == user.id ? navigate("/") : navigate("/users");
     }
   };
+  //   console.log(userId.id, user.id);
 
   if (!userId) {
     return (

@@ -80,7 +80,10 @@ function CreateUser() {
           <form className="space-y-6" onSubmit={handleSubmit}>
             {/* Nome */}
             <div>
-              <label className="block font-medium text-gray-700">Nome</label>
+              <label className="block font-medium text-gray-700">
+                Nome{" "}
+                <sup className="text-red-900 text-[20px] top-[-0.2rem]">*</sup>
+              </label>
               <input
                 required
                 type="text"
@@ -93,7 +96,10 @@ function CreateUser() {
 
             {/* Email */}
             <div>
-              <label className="block font-medium text-gray-700">Email</label>
+              <label className="block font-medium text-gray-700">
+                Email{" "}
+                <sup className="text-red-900 text-[20px] top-[-0.2rem]">*</sup>
+              </label>
               <input
                 required
                 type="email"
@@ -107,7 +113,8 @@ function CreateUser() {
             {/* Password */}
             <div>
               <label className="block font-medium text-gray-700">
-                Password
+                Password{" "}
+                <sup className="text-red-900 text-[20px] top-[-0.2rem]">*</sup>
               </label>
               <input
                 required
@@ -181,8 +188,8 @@ function CreateUser() {
                 onChange={handleChange}
                 className="w-full border border-gray-300 p-2 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
               >
-                <option value="1">Admin</option>
-                <option value="2">Utente</option>
+                <option value="2">Admin</option>
+                <option value="3">Utente</option>
               </select>
             </div>
 
@@ -197,7 +204,7 @@ function CreateUser() {
                 onChange={handleChange}
                 className="w-full border border-gray-300 p-2 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 rows="3"
-                placeholder="Ama viaggiare e scoprire nuove culture..."
+                placeholder="Descrizione profilo..."
               ></textarea>
             </div>
 
