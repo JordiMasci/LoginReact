@@ -18,17 +18,13 @@ function EditUser() {
 
   //   Profile (privilegi) utente selezionato
   const profile = useSelector((state) => profileById(state, user?.profileId));
-  //   console.log("Profile", profile);
+  console.log("Profile", profile);
 
   // profilo (privilegi) del currentUser
   const profileCurrentUser = useSelector((state) =>
     profileById(state, currentUser?.profileId)
   );
   // console.log("profile", profileCurrentUser);
-
-  // ----------------------------------------------------------------------------------------------------------------
-
-  // ----------------------------------------------------------------------------------------------------------------
 
   // Stato locale per i campi del form
   const [name, setName] = useState("");
@@ -59,7 +55,6 @@ function EditUser() {
     !user ||
     !profileCurrentUser.changeData
   ) {
-    console.log("Errori");
     return (
       <div className="flex justify-center items-center h-screen">
         <p className="text-red-500 text-2xl">Utente non trovato/abilitato</p>
@@ -82,6 +77,8 @@ function EditUser() {
           <div className="flex justify-center">
             <img src={user.img} alt="" className="rounded-full w-[250px]" />
           </div>
+
+          {/* NOME */}
           <div>
             <label className="block text-black mb-1">Nome</label>
             <input
@@ -93,6 +90,7 @@ function EditUser() {
             />
           </div>
 
+          {/* EMAIL */}
           <div>
             <label className="block text-gray-700 mb-1">Email</label>
             <input
@@ -104,6 +102,7 @@ function EditUser() {
             />
           </div>
 
+          {/* DESCRIZIONE */}
           <div>
             <label className="block text-gray-700 mb-1">Descrizione</label>
             <textarea
@@ -116,41 +115,60 @@ function EditUser() {
             ></textarea>
           </div>
 
-          {/* PROVA */}
-          <div>
-            <label className="block  text-gray-700 pb-1.5">Privilegi</label>
-            <select
-              name="profileId"
-              value={profileId}
-              className="w-full border border-gray-300 p-2 rounded-md 
+          {/* PRIVILEGI*/}
+          {!profile.superAdmin ? (
+            <div>
+              <label className="block  text-gray-700 pb-1.5">Privilegi</label>
+              <select
+                name="profileId"
+                value={profileId}
+                className="w-full border border-gray-300 p-2 rounded-md 
               focus:ring-2 focus:ring-blue-500 focus:outline-none"
-              onChange={(e) => setProfileId(e.target.value)}
-            >
-              <option value="2">Admin</option>
-              <option value="3">Utente</option>
-            </select>
-          </div>
+                onChange={(e) => setProfileId(e.target.value)}
+              >
+                <option value="2">Admin</option>
+                <option value="3">Utente</option>
+              </select>
+            </div>
+          ) : (
+            <div className="flex justify-between">
+              <p>
+                Privilegi: <span className="italic">{profile.name}</span>
+              </p>
+              <p>
+                Genere:{" "}
+                <span className="italic">
+                  {user.gender === "f" ? "Donna" : "Uomo"}
+                </span>
+              </p>
+            </div>
+          )}
 
-          <div className="flex justify-between">
-            <p>
-              Genere:{" "}
-              <span className="italic">
-                {user.gender === "f" ? "Donna" : "Uomo"}
-              </span>
-            </p>
-          </div>
+          {/* GENERE */}
+          {!profile.superAdmin && (
+            <div className="flex justify-between">
+              <p>
+                Genere:{" "}
+                <span className="italic">
+                  {user.gender === "f" ? "Donna" : "Uomo"}
+                </span>
+              </p>
+            </div>
+          )}
 
           <div className="flex justify-end gap-4">
             <button
               type="button"
               onClick={() => navigate("/users")}
-              className="px-6 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition"
+              className="px-6 py-2 bg-gray-600 text-white rounded-lg
+               hover:bg-gray-700 transition"
             >
               Annulla
             </button>
             <button
               type="submit"
-              className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+              className="px-6 py-2 bg-blue-600 text-white rounded-lg
+               hover:bg-blue-700 transition"
             >
               Salva
             </button>
