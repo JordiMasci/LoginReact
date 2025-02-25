@@ -84,7 +84,7 @@ function SingleCard() {
 
           {/* Altre informazioni */}
           <div className="flex justify-center gap-4">
-            {profile.changeData && (
+            {profile.changeData && !profileCurrenteUser.superAdmin && (
               <button
                 onClick={() => navigate(`/editUser/${cardId}`)}
                 className="bg-blue-600 text-white px-6 py-2 rounded-lg
