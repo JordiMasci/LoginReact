@@ -18,7 +18,7 @@ function EditUser() {
 
   //   Profile (privilegi) utente selezionato
   const profile = useSelector((state) => profileById(state, user?.profileId));
-  console.log("Profile", profile);
+  //   console.log("Profile", profile);
 
   // profilo (privilegi) del currentUser
   const profileCurrentUser = useSelector((state) =>

@@ -20,7 +20,6 @@ function App() {
     const newDescription = prompt("Modifica descrizione", user.description);
     dispatch(changeDescription(newDescription));
   };
-  console.log(user);
 
   return (
     <>

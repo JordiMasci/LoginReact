@@ -28,8 +28,8 @@ function Card({ userId, img, name, description, profileCurrentUser, user }) {
         <div className="mt-4 flex justify-center gap-2.5">
           <Link to={`${userId}`} key={userId}>
             <button
-              className="px-6 py-2 bg-cyan-950 text-white rounded-lg
-           hover:bg-cyan-600 transition cursor-pointer"
+              className="px-6 py-2 bg-green-700 text-white rounded-lg
+           hover:bg-green-800 transition cursor-pointer"
             >
               Dettaglio
             </button>
