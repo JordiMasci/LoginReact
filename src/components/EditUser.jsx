@@ -17,14 +17,19 @@ function EditUser() {
     state.users.value.find((singleUser) => singleUser.id == cardId)
   );
 
+  //   Profile (privilegi) utente selezionato
   const profile = useSelector((state) => profileById(state, user?.profileId));
   //   console.log("Profile", profile);
 
-  // profilo del currentUser (privilegi)
+  // profilo (privilegi) del currentUser
   const profileCurrentUser = useSelector((state) =>
     profileById(state, currentUser?.profileId)
   );
-  //   console.log("profile", profileCurrentUser);
+  // console.log("profile", profileCurrentUser);
+
+  // ----------------------------------------------------------------------------------------------------------------
+
+  // ----------------------------------------------------------------------------------------------------------------
 
   // Stato locale per i campi del form
   const [name, setName] = useState("");
@@ -50,7 +55,12 @@ function EditUser() {
     navigate("/users");
   };
 
-  if (!user || !profileCurrentUser.changeData) {
+  if (
+    (!profileCurrentUser.superAdmin && profile.superAdmin) ||
+    !user ||
+    !profileCurrentUser.changeData
+  ) {
+    console.log("Errori");
     return (
       <div className="flex justify-center items-center h-screen">
         <p className="text-red-500 text-2xl">Utente non trovato/abilitato</p>
