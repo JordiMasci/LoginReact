@@ -19,6 +19,12 @@ function SingleCard() {
     state.users.value.find((singleUser) => singleUser.id == cardId)
   );
 
+  // Profilo (privilegi) utente selezionato
+  const profileCurrenteUser = useSelector((state) =>
+    profileById(state, userId?.profileId)
+  );
+  console.log(profileCurrenteUser);
+
   const handleDelete = () => {
     if (window.confirm("Sei sicuro di voler eliminare questo utente?")) {
       dispatch(deleteUser(userId.id));
@@ -78,7 +84,7 @@ function SingleCard() {
 
           {/* Altre informazioni */}
           <div className="flex justify-center gap-4">
-            {profile.changeData ? (
+            {profile.changeData && (
               <button
                 onClick={() => navigate(`/editUser/${cardId}`)}
                 className="bg-blue-600 text-white px-6 py-2 rounded-lg
@@ -86,10 +92,8 @@ function SingleCard() {
               >
                 Modifica
               </button>
-            ) : (
-              ""
             )}
-            {profile.deleteData ? (
+            {profile.deleteData && !profileCurrenteUser.superAdmin && (
               <button
                 onClick={handleDelete}
                 className="bg-gray-600 text-white px-6 py-2 rounded-lg
@@ -97,8 +101,6 @@ function SingleCard() {
               >
                 Elimina
               </button>
-            ) : (
-              ""
             )}
           </div>
         </div>
