@@ -1,8 +1,17 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { profileById } from "../stores/profileSlice";
 
-function Card({ userId, img, name, description }) {
+function Card({ userId, img, name, description, profileCurrentUser, user }) {
   const navigate = useNavigate();
+
+  const profile = useSelector((state) => profileById(state, user?.profileId));
+
+  const isSuperAdmin = profileCurrentUser?.superAdmin;
+  const isAdmin = profileCurrentUser?.admin;
+
+  const canEdit = isSuperAdmin || (isAdmin && !profile?.superAdmin);
 
   return (
     <div
@@ -25,13 +34,15 @@ function Card({ userId, img, name, description }) {
               Dettaglio
             </button>
           </Link>
-          <button
-            onClick={() => navigate(`/editUser/${userId}`)}
-            className="bg-blue-600 text-white px-6 py-2 rounded-lg
+          {canEdit && (
+            <button
+              onClick={() => navigate(`/editUser/${userId}`)}
+              className="bg-blue-600 text-white px-6 py-2 rounded-lg
              hover:bg-blue-700 transition-colors cursor-pointer"
-          >
-            Modifica
-          </button>
+            >
+              Modifica
+            </button>
+          )}
         </div>
       </div>
     </div>

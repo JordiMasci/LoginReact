@@ -9,11 +9,21 @@ function Users() {
   const currentUser = useSelector((state) => state.users.currentUser);
   const users = useSelector((state) => state.users.value);
 
-  const profile = useSelector((state) =>
+  // Profilo privilegi CurrentUser
+  const profileCurrentUser = useSelector((state) =>
     profileById(state, currentUser?.profileId)
   );
 
-  // console.log(users);
+  // Profilo privilegi tutti gli utenti
+  const profile = useSelector((state) =>
+    profileById(state, users[5]?.profileId)
+  );
+
+  // console.log(profile);
+
+  // console.log("QUESTO è PROFILE", profile);
+
+  // console.log("QUESTO è USERS", users);
 
   return (
     <>
@@ -24,11 +34,13 @@ function Users() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {users.map((user) => (
                 <Card
+                  user={user}
                   key={user.id}
                   userId={user.id}
                   img={user.img}
                   name={user.name}
                   description={user.description}
+                  profileCurrentUser={profileCurrentUser}
                 />
               ))}
             </div>
