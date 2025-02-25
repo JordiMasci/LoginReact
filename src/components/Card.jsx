@@ -30,8 +30,8 @@ function Card({ userId, img, name, description, profileCurrentUser, user }) {
       {isSuperAdmin && (
         <span
           onClick={handleDelete}
-          className="prova absolute top-[2%] right-[3%] cursor-pointer 
-         bold text-black text-[20px]"
+          className="h-5 w-5 flex items-center justify-center font-medium 
+          absolute top-[2%] right-[3%] cursor-pointer text-black text-[20px]"
         >
           <i className="fa-regular fa-circle-xmark"></i>
         </span>
