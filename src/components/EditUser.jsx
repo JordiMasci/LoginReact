@@ -16,10 +16,9 @@ function EditUser() {
   const user = useSelector((state) =>
     state.users.value.find((singleUser) => singleUser.id == cardId)
   );
-  console.log("User", user);
 
   const profile = useSelector((state) => profileById(state, user?.profileId));
-  console.log("Profile", profile);
+  //   console.log("Profile", profile);
 
   // profilo del currentUser (privilegi)
   const profileCurrentUser = useSelector((state) =>
@@ -31,6 +30,7 @@ function EditUser() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [description, setDescription] = useState("");
+  const [profileId, setProfileId] = useState();
 
   // Pre-popoliamo il form quando l'utente viene caricato
   useEffect(() => {
@@ -38,13 +38,16 @@ function EditUser() {
       setName(user.name);
       setEmail(user.email);
       setDescription(user.description);
+      setProfileId(user.profileId);
     }
   }, [user]);
+
+  console.log(profileId);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Dispatch dell'azione per aggiornare l'utente
-    dispatch(updateUser({ id: user.id, name, email, description }));
+    dispatch(updateUser({ id: user.id, name, email, description, profileId }));
     // Dopo l'aggiornamento, naviga alla pagina degli utenti
     navigate("/users");
   };
@@ -99,10 +102,26 @@ function EditUser() {
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full border border-gray-300 p-2 rounded-md text-black"
+              className="w-full border border-gray-300 px-2 rounded-md
+               text-black"
               rows="4"
               required
             ></textarea>
+          </div>
+
+          {/* PROVA */}
+          <div>
+            <label className="block  text-gray-700 pb-1.5">Privilegi</label>
+            <select
+              name="profileId"
+              value={profileId}
+              className="w-full border border-gray-300 p-2 rounded-md 
+              focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              onChange={(e) => setProfileId(e.target.value)}
+            >
+              <option value="2">Admin</option>
+              <option value="3">Utente</option>
+            </select>
           </div>
 
           <div className="flex justify-between">
@@ -112,7 +131,6 @@ function EditUser() {
                 {user.gender === "f" ? "Donna" : "Uomo"}
               </span>
             </p>
-            <p>{profile.name}</p>
           </div>
 
           <div className="flex justify-end gap-4">

@@ -183,12 +183,14 @@ const usersSlice = createSlice({
     },
 
     updateUser: (state, action) => {
-      const { id, name, email, description } = action.payload;
+      const { id, name, email, description, profileId } = action.payload;
+      // Verifica quale utente (in tutto l'array) ha l'id uguale a quello delle modifiche
       const index = state.value.findIndex((user) => user.id === id);
       if (index !== -1) {
         state.value[index].name = name;
         state.value[index].email = email;
         state.value[index].description = description;
+        state.value[index].profileId = profileId;
         // Se l'utente aggiornato è anche quello connesso, aggiornalo anche in currentUser
         if (state.currentUser && state.currentUser.id === id) {
           state.currentUser = {
@@ -196,6 +198,7 @@ const usersSlice = createSlice({
             name,
             email,
             description,
+            profileId,
           };
           localStorage.setItem(
             "currentUser",
