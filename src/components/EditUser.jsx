@@ -42,8 +42,6 @@ function EditUser() {
     }
   }, [user]);
 
-  console.log(profileId);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     // Dispatch dell'azione per aggiornare l'utente
