@@ -10,18 +10,21 @@ const profileSlice = createSlice({
     value: [
       {
         id: 1,
+        name: "Super Admin",
         changeData: true,
         deleteData: true,
         superAdmin: true,
       },
       {
         id: 2,
+        name: "Admin",
         changeData: true,
         deleteData: false,
         superAdmin: false,
       },
       {
         id: 3,
+        name: "Utente",
         changeData: false,
         deleteData: false,
         superAdmin: false,

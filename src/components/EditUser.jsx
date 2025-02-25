@@ -4,22 +4,28 @@ import Navbar from "./Navbar";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUser } from "../stores/userSlice";
 import { profileById } from "../stores/profileSlice";
+import { space } from "postcss/lib/list";
 
 function EditUser() {
   const { cardId } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const currentUser = useSelector((state) => state.users.currentUser);
+
   // Seleziona l'utente da modificare in base al cardId
   const user = useSelector((state) =>
     state.users.value.find((singleUser) => singleUser.id == cardId)
   );
-  console.log(user);
+  console.log("User", user);
 
-  const profile = useSelector((state) =>
+  const profile = useSelector((state) => profileById(state, user?.profileId));
+  console.log("Profile", profile);
+
+  // profilo del currentUser (privilegi)
+  const profileCurrentUser = useSelector((state) =>
     profileById(state, currentUser?.profileId)
   );
-  console.log(profile.changeData);
+  //   console.log("profile", profileCurrentUser);
 
   // Stato locale per i campi del form
   const [name, setName] = useState("");
@@ -43,7 +49,7 @@ function EditUser() {
     navigate("/users");
   };
 
-  if (!user || !profile.changeData) {
+  if (!user || !profileCurrentUser.changeData) {
     return (
       <div className="flex justify-center items-center h-screen">
         <p className="text-red-500 text-2xl">Utente non trovato/abilitato</p>
@@ -59,10 +65,13 @@ function EditUser() {
           onSubmit={handleSubmit}
           className="max-w-lg w-full bg-white rounded-xl shadow-lg p-8 space-y-6"
         >
-          <h2 className="text-3xl font-bold text-black mb-4">
+          <h2 className="text-3xl font-bold text-black mb-4 text-center">
             Modifica Utente
           </h2>
 
+          <div className="flex justify-center">
+            <img src={user.img} alt="" className="rounded-full w-[250px]" />
+          </div>
           <div>
             <label className="block text-black mb-1">Nome</label>
             <input
@@ -94,6 +103,16 @@ function EditUser() {
               rows="4"
               required
             ></textarea>
+          </div>
+
+          <div className="flex justify-between">
+            <p>
+              Genere:{" "}
+              <span className="italic">
+                {user.gender === "f" ? "Donna" : "Uomo"}
+              </span>
+            </p>
+            <p>{profile.name}</p>
           </div>
 
           <div className="flex justify-end gap-4">
