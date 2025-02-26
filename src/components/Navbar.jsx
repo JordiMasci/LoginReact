@@ -113,7 +113,7 @@ const Navbar = () => {
             {profile.superAdmin ? (
               <li>
                 <Link
-                  to={"/ceateUser"}
+                  to={"/createUser"}
                   className="block py-2 px-3 text-gray-900 rounded
                  hover:bg-gray-500 md:hover:bg-transparent
                  md:hover:text-blue-700 md:p-0 dark:text-white"
