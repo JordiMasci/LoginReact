@@ -63,7 +63,6 @@ function CreateUser() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Hai cliccato");
 
     dispatch(createUser(formData));
     setFormData({
