@@ -49,7 +49,7 @@ const usersSlice = createSlice({
         isChecked: false,
         img: foto_3,
         gender: "m",
-        profileId: 1,
+        profileId: 3,
         description:
           "Amante della tecnologia e del coding, sempre con un nuovo progetto in mente.",
       },
