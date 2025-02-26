@@ -21,6 +21,7 @@ function CreateUser() {
   const user = useSelector((state) => state.users.currentUser);
 
   const profile = useSelector((state) => profileById(state, user?.profileId));
+  console.log(profile.name);
 
   const [formData, setFormData] = useState({
     name: "",

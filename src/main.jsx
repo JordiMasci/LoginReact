@@ -3,12 +3,15 @@ import { createRoot } from "react-dom/client";
 import { store } from "./stores/store";
 import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import App from "./App.jsx";
 import Users from "./components/Users.jsx";
 import Login from "./components/Login.jsx";
 import SingleCard from "./components/SingleCard.jsx";
 import EditUser from "./components/EditUser.jsx";
 import CreateUser from "./components/CreateUser.jsx";
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -39,8 +42,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router}></RouterProvider>
-    </Provider>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <RouterProvider router={router}></RouterProvider>
+      </Provider>
+    </QueryClientProvider>
   </StrictMode>
 );
