@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "./Navbar";
 import { useState } from "react";
-import { createUser } from "../stores/userSlice";
+import { createUser, updateUser } from "../stores/userSlice";
 import { useNavigate } from "react-router-dom";
 import { profileById } from "../stores/profileSlice";
 import foto_1 from "../assets/foto-1.jpg";
@@ -32,16 +32,38 @@ function CreateUser() {
     description: "",
   });
 
+  // Setto button grigio --> solo colore
+  const [focus, setFocus] = useState(false);
+
+  // Setto button a disabled
+  const [disabled, setDisabled] = useState(true);
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: type === "checked" ? checked : value,
-    }));
+    const inputValue = type === "checked" ? checked : value;
+    setFormData((prevData) => {
+      const updateForm = { ...prevData, [name]: inputValue };
+
+      validateForm(updateForm);
+
+      return updateForm;
+    });
+  };
+
+  // Validazione valori Form inseriti
+  const validateForm = (updateForm) => {
+    const nameValid = updateForm.name.length > 0;
+    const emailValid =
+      updateForm.email.includes("@") && updateForm.email.includes(".");
+    const passwordValid = updateForm.password.length >= 8;
+
+    setFocus(nameValid && emailValid && passwordValid);
+    setDisabled(!nameValid || !emailValid || !passwordValid);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Hai cliccato");
 
     dispatch(createUser(formData));
     setFormData({
@@ -56,6 +78,7 @@ function CreateUser() {
     navigate("/users");
   };
 
+  // const validateForm
   if (!profile.superAdmin) {
     return (
       <>
@@ -210,8 +233,14 @@ function CreateUser() {
 
             {/* Pulsante di invio */}
             <button
+              disabled={disabled}
               type="submit"
-              className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+              className={`w-full py-2 rounded-lg transition text-white
+                ${
+                  focus
+                    ? "bg-blue-600 hover:bg-blue-700"
+                    : "bg-gray-200  dark:bg-gray-600"
+                }`}
             >
               Crea Utente
             </button>
