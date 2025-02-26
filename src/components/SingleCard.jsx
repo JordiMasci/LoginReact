@@ -23,7 +23,7 @@ function SingleCard() {
   const profileCurrenteUser = useSelector((state) =>
     profileById(state, userId?.profileId)
   );
-  console.log(profileCurrenteUser);
+  // console.log(profileCurrenteUser);s
 
   const handleDelete = () => {
     if (window.confirm("Sei sicuro di voler eliminare questo utente?")) {
@@ -31,6 +31,7 @@ function SingleCard() {
       userId.id == user.id ? navigate("/") : navigate("/users");
     }
   };
+
   //   console.log(userId.id, user.id);
 
   if (!userId) {
@@ -78,7 +79,7 @@ function SingleCard() {
             </div>
             {/* <!-- Privilegi --> */}
             <div className="w-full sm:text-right">
-              <p>Privilegi: {profile.name}</p>
+              <p>Privilegi: {profileCurrenteUser.name}</p>
             </div>
           </div>
 
