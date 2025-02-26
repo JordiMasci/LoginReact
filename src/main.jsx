@@ -10,6 +10,7 @@ import Login from "./components/Login.jsx";
 import SingleCard from "./components/SingleCard.jsx";
 import EditUser from "./components/EditUser.jsx";
 import CreateUser from "./components/CreateUser.jsx";
+import ChiamataServerProva from "./components/ChiamataServerProva.jsx";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
   {
     path: "/createUser",
     element: <CreateUser></CreateUser>,
+  },
+  {
+    path: "/server",
+    element: <ChiamataServerProva></ChiamataServerProva>,
   },
 ]);
 
