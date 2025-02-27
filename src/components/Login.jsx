@@ -5,11 +5,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { login, fetchUsers } from "../stores/userSlice";
 import logo from "../assets/logo.avif";
 import "./Login.scss";
+import { fetchProfiles } from "../stores/profileSlice";
 
 function Login() {
   const users = useSelector((state) => state.users.value);
   const currentUser = useSelector((state) => state.users.currentUser);
-  const status = useSelector((state) => state.users.status);
+  const statusUsers = useSelector((state) => state.users.status);
+  const statusProfiles = useSelector((state) => state.profiles.status);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -22,10 +24,11 @@ function Login() {
     isChecked: false,
   });
 
-  // Esegui la chiamata al DB al montaggio del componente
+  // Esegui la chiamata al DB al montaggio del componente (USERS)
   useEffect(() => {
-    status === "idle" ? dispatch(fetchUsers()) : null;
-  }, [dispatch, status]);
+    statusUsers === "idle" ? dispatch(fetchUsers()) : null;
+    statusProfiles === "idle" ? dispatch(fetchProfiles()) : null;
+  }, [dispatch, statusUsers, statusProfiles]);
 
   // CONTROLLO DATI AL CARICAMENTO PAGINA
   useEffect(() => {
