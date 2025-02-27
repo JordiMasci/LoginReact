@@ -9,8 +9,6 @@ function Users() {
   const currentUser = useSelector((state) => state.users.currentUser);
   const users = useSelector((state) => state.users.value);
 
-  console.log(users);
-
   // Profilo privilegi CurrentUser
   const profileCurrentUser = useSelector((state) =>
     profileById(state, currentUser?.profileId)

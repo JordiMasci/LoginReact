@@ -4,27 +4,20 @@ import { useSelector, useDispatch } from "react-redux";
 import { profileById } from "./stores/profileSlice";
 import Navbar from "./components/Navbar";
 
-import { changeName, changeDescription } from "./stores/userSlice";
+import { changeName } from "./stores/userSlice";
 
 function App() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.users.currentUser);
-  const profile = useSelector((state) => state.profiles.value);
+  // const profile = useSelector((state) => state.profiles.value);
 
   const profileCurrentUser = useSelector((state) =>
     profileById(state, user?.profileId)
   );
 
-  console.log(profileCurrentUser);
-
   const handleChangeName = () => {
     const newName = prompt("Modifica Nome", user.name);
     dispatch(changeName(newName));
-  };
-
-  const handleChangeDescription = () => {
-    const newDescription = prompt("Modifica descrizione", user.description);
-    dispatch(changeDescription(newDescription));
   };
 
   return (

@@ -1,14 +1,17 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+// Imposto valore dello state
 const savedUsers = JSON.parse(localStorage.getItem("users")) || [];
 
+// Faccio chiamata API e salvo in localStorage
 export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
   const response = await axios.get("http://localhost:5000/users");
   localStorage.setItem("users", JSON.stringify(response.data));
   return response.data;
 });
 
+// Inizializzo valore dell'utente loggato
 const storedUser = localStorage.getItem("currentUser")
   ? JSON.parse(localStorage.getItem("currentUser"))
   : null;
@@ -56,23 +59,9 @@ const usersSlice = createSlice({
       }
     },
 
-    changeDescription: (state, action) => {
-      if (state.currentUser) {
-        // Cambia la descrizione dell'utente connesso
-        state.currentUser.description = action.payload;
-        // Aggiorna la lista utenti con la nuova descrizione
-        const userIndex = state.value.findIndex(
-          (u) => u.id === state.currentUser.id
-        );
-        if (userIndex !== -1) {
-          state.value[userIndex].description = action.payload;
-        }
-        localStorage.setItem("currentUser", JSON.stringify(state.currentUser));
-      }
-    },
-
     deleteUser: (state, action) => {
       state.value = state.value.filter((user) => user.id !== action.payload);
+      localStorage.setItem("users", JSON.stringify(state.value));
     },
 
     updateUser: (state, action) => {
@@ -84,6 +73,7 @@ const usersSlice = createSlice({
         state.value[index].email = email;
         state.value[index].description = description;
         state.value[index].profileId = profileId;
+        localStorage.setItem("users", JSON.stringify(state.value));
         // Se l'utente aggiornato è anche quello connesso, aggiornalo anche in currentUser
         if (state.currentUser && state.currentUser.id === id) {
           state.currentUser = {
@@ -109,6 +99,7 @@ const usersSlice = createSlice({
           : 0;
       newUser.id = newId;
       state.value.push(newUser);
+      localStorage.setItem("users", JSON.stringify(state.value));
     },
   },
   extraReducers: (builder) => {
