@@ -108,10 +108,9 @@ function EditUser() {
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full border border-gray-300 px-2 rounded-md
+              className="w-full border border-gray-300 p-2 rounded-md
                text-black"
               rows="4"
-              required
             ></textarea>
           </div>
 

@@ -4,15 +4,16 @@ import { useState } from "react";
 import { createUser, updateUser } from "../stores/userSlice";
 import { useNavigate } from "react-router-dom";
 import { profileById } from "../stores/profileSlice";
-import foto_1 from "../assets/foto-1.jpg";
-import foto_2 from "../assets/foto-2.jpg";
-import foto_3 from "../assets/foto-3.jpg";
-import foto_4 from "../assets/foto-4.jpg";
-import foto_5 from "../assets/foto-5.jpg";
-import foto_6 from "../assets/foto-6.jpg";
-import foto_7 from "../assets/foto-7.jpg";
-import foto_8 from "../assets/foto-8.jpg";
-import foto_9 from "../assets/foto-9.jpg";
+
+const foto_1 = "https://i.postimg.cc/hQdcrG0d/foto-1.jpg";
+const foto_2 = "https://i.postimg.cc/NL9sYNwj/foto-2.jpg";
+const foto_3 = "https://i.postimg.cc/18PsGsV8/foto-3.jpg";
+const foto_4 = "https://i.postimg.cc/23sz54zF/foto-4.jpg";
+const foto_5 = "https://i.postimg.cc/4mpXHmyC/foto-5.jpg";
+const foto_6 = "https://i.postimg.cc/pmZxk4Kq/foto-6.jpg";
+const foto_7 = "https://i.postimg.cc/wtjzr2VH/foto-7.jpg";
+const foto_8 = "https://i.postimg.cc/4K2GRcLc/foto-8.jpg";
+const foto_9 = "https://i.postimg.cc/xJk2fdh4/foto-9.jpg";
 
 function CreateUser() {
   const dispatch = useDispatch();
@@ -21,13 +22,12 @@ function CreateUser() {
   const user = useSelector((state) => state.users.currentUser);
 
   const profile = useSelector((state) => profileById(state, user?.profileId));
-  console.log(profile.name);
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
-    img: foto_1,
+    img: "",
     gender: "f",
     profileId: 3,
     description: "",
@@ -70,7 +70,7 @@ function CreateUser() {
       name: "",
       email: "",
       password: "",
-      img: foto_1,
+      img: "",
       gender: "f",
       profileId: 3,
       description: "",
@@ -225,7 +225,8 @@ function CreateUser() {
                 name="description"
                 value={formData.description}
                 onChange={handleChange}
-                className="w-full border border-gray-300 p-2 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="w-full border border-gray-300 p-2 rounded-md focus:ring-2
+                 focus:ring-blue-500 focus:outline-none"
                 rows="3"
                 placeholder="Descrizione profilo..."
               ></textarea>

@@ -23,7 +23,7 @@ const usersSlice = createSlice({
         email: "gaia@email.com",
         password: "ciaociao",
         isChecked: false,
-        img: foto_6,
+        img: "https://i.postimg.cc/pmZxk4Kq/foto-6.jpg",
         gender: "f",
         profileId: 1,
         description:
@@ -35,7 +35,7 @@ const usersSlice = createSlice({
         email: "barbara@email.com",
         password: "ciaociao",
         isChecked: false,
-        img: foto_9,
+        img: "https://i.postimg.cc/xJk2fdh4/foto-9.jpg",
         gender: "f",
         profileId: 2,
         description:
@@ -47,7 +47,7 @@ const usersSlice = createSlice({
         email: "riccardo@email.com",
         password: "ciaociao",
         isChecked: false,
-        img: foto_3,
+        img: "https://i.postimg.cc/18PsGsV8/foto-3.jpg",
         gender: "m",
         profileId: 3,
         description:
@@ -59,7 +59,7 @@ const usersSlice = createSlice({
         email: "luca@email.com",
         password: "ciaociao",
         isChecked: false,
-        img: foto_4,
+        img: "https://i.postimg.cc/23sz54zF/foto-4.jpg",
         gender: "m",
         profileId: 3,
         description:
@@ -71,7 +71,7 @@ const usersSlice = createSlice({
         email: "elena@email.com",
         password: "ciaociao",
         isChecked: false,
-        img: foto_5,
+        img: "https://i.postimg.cc/4mpXHmyC/foto-5.jpg",
         gender: "f",
         profileId: 3,
         description:
@@ -83,7 +83,7 @@ const usersSlice = createSlice({
         email: "marco@email.com",
         password: "ciaociao",
         isChecked: false,
-        img: foto_2,
+        img: "https://i.postimg.cc/NL9sYNwj/foto-2.jpg",
         gender: "m",
         profileId: 3,
         description:
@@ -95,7 +95,7 @@ const usersSlice = createSlice({
         email: "sofia@email.com",
         password: "ciaociao",
         isChecked: false,
-        img: foto_7,
+        img: "https://i.postimg.cc/wtjzr2VH/foto-7.jpg",
         gender: "f",
         profileId: 3,
         description:
@@ -107,7 +107,7 @@ const usersSlice = createSlice({
         email: "andrea@email.com",
         password: "ciaociao",
         isChecked: false,
-        img: foto_1,
+        img: "https://i.postimg.cc/hQdcrG0d/foto-1.jpg",
         gender: "m",
         profileId: 3,
         description:
@@ -119,7 +119,7 @@ const usersSlice = createSlice({
         email: "valentina@email.com",
         password: "ciaociao",
         isChecked: false,
-        img: foto_8,
+        img: "https://i.postimg.cc/4K2GRcLc/foto-8.jpg",
         gender: "f",
         profileId: 3,
         description:
