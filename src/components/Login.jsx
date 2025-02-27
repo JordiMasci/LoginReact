@@ -2,27 +2,30 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { login } from "../stores/userSlice";
+import { login, fetchUsers } from "../stores/userSlice";
 import logo from "../assets/logo.avif";
 import "./Login.scss";
 
 function Login() {
   const users = useSelector((state) => state.users.value);
   const currentUser = useSelector((state) => state.users.currentUser);
+  const status = useSelector((state) => state.users.status);
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
 
   const [error, setError] = useState(false);
-
   const [isDisable, setDisable] = useState(true);
-
   const [focusButton, setFocusButton] = useState(false);
   const [form, setForm] = useState({
     email: "",
     password: "",
     isChecked: false,
   });
+
+  // Esegui la chiamata al DB al montaggio del componente
+  useEffect(() => {
+    status === "idle" ? dispatch(fetchUsers()) : null;
+  }, [dispatch, status]);
 
   // CONTROLLO DATI AL CARICAMENTO PAGINA
   useEffect(() => {

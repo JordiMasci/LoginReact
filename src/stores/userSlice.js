@@ -1,13 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
-import foto_1 from "../assets/foto-1.jpg";
-import foto_2 from "../assets/foto-2.jpg";
-import foto_3 from "../assets/foto-3.jpg";
-import foto_4 from "../assets/foto-4.jpg";
-import foto_5 from "../assets/foto-5.jpg";
-import foto_6 from "../assets/foto-6.jpg";
-import foto_7 from "../assets/foto-7.jpg";
-import foto_8 from "../assets/foto-8.jpg";
-import foto_9 from "../assets/foto-9.jpg";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+
+const savedUsers = JSON.parse(localStorage.getItem("users")) || [];
+
+export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
+  const response = await axios.get("http://localhost:5000/users");
+  localStorage.setItem("users", JSON.stringify(response.data));
+  return response.data;
+});
 
 const storedUser = localStorage.getItem("currentUser")
   ? JSON.parse(localStorage.getItem("currentUser"))
@@ -16,117 +16,10 @@ const storedUser = localStorage.getItem("currentUser")
 const usersSlice = createSlice({
   name: "users",
   initialState: {
-    value: [
-      {
-        id: 0,
-        name: "Gaia",
-        email: "gaia@email.com",
-        password: "ciaociao",
-        isChecked: false,
-        img: "https://i.postimg.cc/pmZxk4Kq/foto-6.jpg",
-        gender: "f",
-        profileId: 1,
-        description:
-          "Ama viaggiare e scoprire nuove culture. Appassionata di fotografia.",
-      },
-      {
-        id: 1,
-        name: "Barbara",
-        email: "barbara@email.com",
-        password: "ciaociao",
-        isChecked: false,
-        img: "https://i.postimg.cc/xJk2fdh4/foto-9.jpg",
-        gender: "f",
-        profileId: 2,
-        description:
-          "Grafica e designer, sempre alla ricerca di ispirazione nei dettagli.",
-      },
-      {
-        id: 2,
-        name: "Riccardo",
-        email: "riccardo@email.com",
-        password: "ciaociao",
-        isChecked: false,
-        img: "https://i.postimg.cc/18PsGsV8/foto-3.jpg",
-        gender: "m",
-        profileId: 3,
-        description:
-          "Amante della tecnologia e del coding, sempre con un nuovo progetto in mente.",
-      },
-      {
-        id: 3,
-        name: "Luca",
-        email: "luca@email.com",
-        password: "ciaociao",
-        isChecked: false,
-        img: "https://i.postimg.cc/23sz54zF/foto-4.jpg",
-        gender: "m",
-        profileId: 3,
-        description:
-          "Sportivo e appassionato di fitness, adora le sfide e il lavoro di squadra.",
-      },
-      {
-        id: 4,
-        name: "Elena",
-        email: "elena@email.com",
-        password: "ciaociao",
-        isChecked: false,
-        img: "https://i.postimg.cc/4mpXHmyC/foto-5.jpg",
-        gender: "f",
-        profileId: 3,
-        description:
-          "Musicista nel tempo libero, sempre con una chitarra in mano e una canzone in testa.",
-      },
-      {
-        id: 5,
-        name: "Marco",
-        email: "marco@email.com",
-        password: "ciaociao",
-        isChecked: false,
-        img: "https://i.postimg.cc/NL9sYNwj/foto-2.jpg",
-        gender: "m",
-        profileId: 3,
-        description:
-          "Appassionato di cucina e buon cibo, sperimenta sempre nuove ricette.",
-      },
-      {
-        id: 6,
-        name: "Sofia",
-        email: "sofia@email.com",
-        password: "ciaociao",
-        isChecked: false,
-        img: "https://i.postimg.cc/wtjzr2VH/foto-7.jpg",
-        gender: "f",
-        profileId: 3,
-        description:
-          "Grande lettrice, ama i romanzi storici e scrive recensioni sui libri che legge.",
-      },
-      {
-        id: 7,
-        name: "Andrea",
-        email: "andrea@email.com",
-        password: "ciaociao",
-        isChecked: false,
-        img: "https://i.postimg.cc/hQdcrG0d/foto-1.jpg",
-        gender: "m",
-        profileId: 3,
-        description:
-          "Viaggia per il mondo come fotografo freelance, racconta storie attraverso le immagini.",
-      },
-      {
-        id: 8,
-        name: "Valentina",
-        email: "valentina@email.com",
-        password: "ciaociao",
-        isChecked: false,
-        img: "https://i.postimg.cc/4K2GRcLc/foto-8.jpg",
-        gender: "f",
-        profileId: 3,
-        description:
-          "Ingegnere ambientale, lavora per un futuro più sostenibile e green.",
-      },
-    ],
+    value: savedUsers,
     currentUser: storedUser,
+    status: "idle",
+    error: null,
   },
   reducers: {
     login: (state, action) => {
@@ -217,6 +110,21 @@ const usersSlice = createSlice({
       newUser.id = newId;
       state.value.push(newUser);
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchUsers.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchUsers.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        // popolo lo state con i dati ricevuti
+        state.value = action.payload;
+      })
+      .addCase(fetchUsers.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      });
   },
 });
 
