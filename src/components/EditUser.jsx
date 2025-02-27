@@ -91,7 +91,10 @@ function EditUser() {
 
           {/* NOME */}
           <div>
-            <label className="block text-black mb-1">Nome</label>
+            <label className="block text-black mb-1">
+              Nome{" "}
+              <sup className="text-red-900 text-[20px] top-[-0.2rem]">*</sup>
+            </label>
             <input
               type="text"
               value={name}
@@ -103,7 +106,10 @@ function EditUser() {
 
           {/* EMAIL */}
           <div>
-            <label className="block text-gray-700 mb-1">Email</label>
+            <label className="block text-gray-700 mb-1">
+              Email{" "}
+              <sup className="text-red-900 text-[20px] top-[-0.2rem]">*</sup>
+            </label>
             <input
               type="email"
               value={email}
