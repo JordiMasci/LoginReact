@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { login, fetchUsers } from "../stores/userSlice";
 import logo from "../assets/logo.avif";
-import "./Login.scss";
 import { fetchProfiles } from "../stores/profileSlice";
 
 function Login() {
