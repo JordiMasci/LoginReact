@@ -31,6 +31,8 @@ function EditUser() {
   const [email, setEmail] = useState("");
   const [description, setDescription] = useState("");
   const [profileId, setProfileId] = useState();
+  const [focusButton, setFocusButton] = useState(false);
+  const [disable, setDisable] = useState(true);
 
   // Pre-popoliamo il form quando l'utente viene caricato
   useEffect(() => {
@@ -41,6 +43,15 @@ function EditUser() {
       setProfileId(user.profileId);
     }
   }, [user]);
+
+  useEffect(() => {
+    const validName = name.trim().length > 0;
+    const validEmail = email.includes("@") && email.includes(".");
+    const isValid = validName && validEmail;
+
+    setFocusButton(isValid);
+    setDisable(!isValid);
+  }, [name, email]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -155,6 +166,7 @@ function EditUser() {
             </div>
           )}
 
+          {/* BUTTON */}
           <div className="flex justify-end gap-4">
             <button
               type="button"
@@ -165,9 +177,14 @@ function EditUser() {
               Annulla
             </button>
             <button
+              disabled={disable}
               type="submit"
-              className="px-6 py-2 bg-blue-600 text-white rounded-lg
-               hover:bg-blue-700 transition"
+              className={`px-6 py-2  text-white rounded-lg
+                transition ${
+                  focusButton
+                    ? "bg-blue-600 hover:bg-blue-700"
+                    : "bg-gray-200  dark:bg-gray-600"
+                }`}
             >
               Salva
             </button>
