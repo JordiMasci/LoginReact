@@ -1,15 +1,21 @@
 import { useState } from "react";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
+import { profileById } from "./stores/profileSlice";
 import Navbar from "./components/Navbar";
 
 import { changeName, changeDescription } from "./stores/userSlice";
 
 function App() {
-  const user = useSelector((state) => state.users.currentUser);
-
-  // MODIFICA SUPER-ADMIN
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.users.currentUser);
+  const profile = useSelector((state) => state.profiles.value);
+
+  const profileCurrentUser = useSelector((state) =>
+    profileById(state, user?.profileId)
+  );
+
+  console.log(profileCurrentUser);
 
   const handleChangeName = () => {
     const newName = prompt("Modifica Nome", user.name);
@@ -55,22 +61,11 @@ function App() {
                   className="p-[20px] text-[20px]  rounded-2xl
                  text-white text-center"
                 >
-                  {user.description}
+                  Privilegi utente:{" "}
+                  <span className="italic font-bold">
+                    {profileCurrentUser.name}
+                  </span>
                 </p>
-              </div>
-
-              {/* FINE EDITING */}
-
-              <div className="flex justify-center gap-4 pb-[10px]">
-                <button
-                  onClick={handleChangeDescription}
-                  className="cursor-pointer mt-[30px] text-white bg-blue-700 hover:bg-green-800 
-                               focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full
-                               sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700
-                              dark:focus:ring-green-800"
-                >
-                  Modifica
-                </button>
               </div>
             </div>
           </>
