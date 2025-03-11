@@ -136,7 +136,7 @@ function EditUser() {
           </div>
 
           {/* PRIVILEGI*/}
-          {!profile.superAdmin ? (
+          {!profile.superAdmin && !profileCurrentUser.user ? (
             <div>
               <label className="block  text-gray-700 pb-1.5">Privilegi</label>
               <select
@@ -165,7 +165,7 @@ function EditUser() {
           )}
 
           {/* GENERE */}
-          {!profile.superAdmin && (
+          {!profile.superAdmin && !profileCurrentUser.user ? (
             <div className="flex justify-between">
               <p>
                 Genere:{" "}
@@ -174,7 +174,7 @@ function EditUser() {
                 </span>
               </p>
             </div>
-          )}
+          ) : null}
 
           {/* BUTTON */}
           <div className="flex justify-end gap-4">
