@@ -61,10 +61,14 @@ function EditUser() {
     navigate("/users");
   };
 
+  console.log(profileCurrentUser);
+
   if (
-    (!profileCurrentUser.superAdmin && profile.superAdmin) ||
-    !user ||
-    !profileCurrentUser.changeData
+    !user || // Se l'utente da modificare non esiste
+    (profile.superAdmin && !profileCurrentUser.superAdmin) || // Se l'utente da modificare è un superAdmin ma chi modifica non lo è
+    (user.id !== currentUser.id &&
+      !profileCurrentUser.admin &&
+      !profileCurrentUser.superAdmin) // Se non è admin/superAdmin e sta cercando di modificare un altro utente
   ) {
     return (
       <div className="flex justify-center items-center h-screen">

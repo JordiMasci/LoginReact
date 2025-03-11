@@ -8,6 +8,7 @@ function Card({ userId, img, name, description, profileCurrentUser, user }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const currentUser = useSelector((state) => state.users.currentUser);
   const profile = useSelector((state) => profileById(state, user?.profileId));
 
   const handleDelete = () => {
@@ -20,6 +21,8 @@ function Card({ userId, img, name, description, profileCurrentUser, user }) {
   const isAdmin = profileCurrentUser?.admin;
 
   const canEdit = isSuperAdmin || (isAdmin && !profile?.superAdmin);
+
+  const userEdit = user.id == currentUser.id;
 
   return (
     <div
@@ -57,7 +60,7 @@ function Card({ userId, img, name, description, profileCurrentUser, user }) {
               Dettaglio
             </button>
           </Link>
-          {canEdit && (
+          {canEdit || userEdit ? (
             <button
               onClick={() => navigate(`/editUser/${userId}`)}
               className="bg-blue-600 text-white px-6 py-2 rounded-lg
@@ -65,7 +68,7 @@ function Card({ userId, img, name, description, profileCurrentUser, user }) {
             >
               Modifica
             </button>
-          )}
+          ) : null}
         </div>
       </div>
     </div>
