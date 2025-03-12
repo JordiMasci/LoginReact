@@ -61,7 +61,7 @@ function EditUser() {
     navigate("/users");
   };
 
-  console.log(profileCurrentUser);
+  // console.log(profileCurrentUser);
 
   if (
     !user || // Se l'utente da modificare non esiste
