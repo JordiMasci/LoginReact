@@ -9,7 +9,6 @@ import { changeName, changeGender } from "./stores/userSlice";
 function App() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.users.currentUser);
-  const [newGender, setNewGender] = useState(user?.gender);
 
   const profileCurrentUser = useSelector((state) =>
     profileById(state, user?.profileId)
@@ -19,13 +18,6 @@ function App() {
     const newName = prompt("Modifica Nome", user.name);
     dispatch(changeName(newName));
   };
-
-  const handleChangeGender = (e) => {
-    const selectedGender = e.target.value;
-    setNewGender(selectedGender);
-    dispatch(changeGender(selectedGender));
-  };
-  console.log(newGender);
 
   return (
     <>
@@ -75,32 +67,6 @@ function App() {
                   </span>
                 )}
               </p>
-
-              {/* Edit Genere */}
-              <div className="flex items-center gap-4 text-white">
-                <label htmlFor="">
-                  <input
-                    type="radio"
-                    name="gender"
-                    value="f"
-                    checked={newGender === "f"}
-                    onChange={handleChangeGender}
-                    className="mr-2"
-                  />
-                  Femmina
-                </label>
-                <label htmlFor="">
-                  <input
-                    type="radio"
-                    name="gender"
-                    value="m"
-                    checked={newGender === "f"}
-                    onChange={handleChangeGender}
-                    className="mr-2"
-                  />
-                  Maschio
-                </label>
-              </div>
             </div>
             {/* EDITO TESTO */}
             <div>

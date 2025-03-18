@@ -193,7 +193,7 @@ function EditUser() {
                 transition ${
                   focusButton
                     ? "bg-blue-600 hover:bg-blue-700"
-                    : "bg-gray-200  dark:bg-gray-600"
+                    : "bg-gray-200  dark:bg-gray-400"
                 }`}
             >
               Salva

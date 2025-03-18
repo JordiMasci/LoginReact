@@ -107,7 +107,7 @@ const Navbar = () => {
                 className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-500 
                 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white"
               >
-                Users
+                Utenti
               </Link>
             </li>
             {profile.superAdmin ? (
@@ -118,7 +118,7 @@ const Navbar = () => {
                  hover:bg-gray-500 md:hover:bg-transparent
                  md:hover:text-blue-700 md:p-0 dark:text-white"
                 >
-                  Create User
+                  Crea Utente
                 </Link>
               </li>
             ) : (
@@ -132,7 +132,7 @@ const Navbar = () => {
                 className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-500
                  md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white"
               >
-                LOGOUT
+                Esci
               </a>
             </li>
           </ul>

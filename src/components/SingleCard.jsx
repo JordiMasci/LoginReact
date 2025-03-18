@@ -97,8 +97,8 @@ function SingleCard() {
             {profile.deleteData && !profileCurrenteUser.superAdmin && (
               <button
                 onClick={handleDelete}
-                className="bg-gray-600 text-white px-6 py-2 rounded-lg
-             hover:bg-gray-700 transition-colors cursor-pointer"
+                className="bg-red-600 text-white px-6 py-2 rounded-lg
+             hover:bg-red-700 transition-colors cursor-pointer"
               >
                 Elimina
               </button>

@@ -37,7 +37,7 @@ function Card({ userId, img, name, description, profileCurrentUser, user }) {
           className="h-5 w-5 flex items-center justify-center font-medium 
           absolute top-[2%] right-[3%] cursor-pointer text-black text-[20px]"
         >
-          <i className="fa-regular fa-circle-xmark"></i>
+          <i className="fa-regular fa-circle-xmark text-red-700"></i>
         </span>
       )}
 
