@@ -59,6 +59,20 @@ const usersSlice = createSlice({
       }
     },
 
+    changeGender: (state, action) => {
+      if (state.currentUser) {
+        state.currentUser.gender = action.payload;
+        // Aggiorna la lista utenti con il nuovo nome
+        const userIndex = state.value.findIndex(
+          (u) => u.id === state.currentUser.id
+        );
+        if (userIndex !== -1) {
+          state.value[userIndex].gender = action.payload;
+        }
+        localStorage.setItem("currentUser", JSON.stringify(state.currentUser));
+      }
+    },
+
     deleteUser: (state, action) => {
       state.value = state.value.filter((user) => user.id !== action.payload);
       localStorage.setItem("users", JSON.stringify(state.value));
@@ -123,6 +137,7 @@ export const {
   login,
   logout,
   changeName,
+  changeGender,
   changeDescription,
   deleteUser,
   updateUser,
